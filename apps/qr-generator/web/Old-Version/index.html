@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Generator</title>
+    <!-- Upgraded Library for custom shapes and downloading -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            width: 90%;
+            max-width: 380px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        /* Updated from input[type="text"] to textarea to support new lines */
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #e1e5eb;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            outline: none;
+            resize: vertical; /* Allows the user to drag and resize the height */
+            min-height: 80px;
+        }
+        textarea:focus, select:focus {
+            border-color: #007bff;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+        }
+        
+        /* Smooth fade-in animation for tools */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #customization-tools {
+            display: none; 
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            text-align: left;
+            gap: 12px;
+            width: 100%;
+            animation: slideDown 0.4s ease-out;
+        }
+        .tool-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 45%; 
+            min-width: 80px;
+        }
+        .tool-group label {
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 4px;
+        }
+
+        /* Modern Select Dropdowns */
+        select {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 2px solid #e1e5eb;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+            font-family: inherit;
+        }
+
+        /* Sleek Color Pickers */
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            width: 100%;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: 8px;
+        }
+        input[type="color"]:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Slider styling */
+        .slider-group {
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .slider-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+        #quality-val {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        /* Modern animated range slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.3s;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.3);
+            background: #0056b3;
+        }
+
+        /* Logo Upload Area Styling */
+        .logo-upload-group {
+            width: 100%;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px dashed #cbd5e1;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .logo-upload-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .logo-upload-group:hover {
+            border-color: #007bff;
+        }
+        .logo-upload-btn {
+            background: white;
+            border: 1px solid #e1e5eb;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+            transition: all 0.2s;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .logo-upload-btn:hover {
+            background: #f1f5f9;
+            color: #007bff;
+        }
+        .logo-upload-btn input {
+            display: none;
+        }
+        #logo-preview-container {
+            display: none; /* Hidden until logo is uploaded */
+            align-items: center;
+            gap: 10px;
+        }
+        #logo-preview {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 6px;
+            border: 1px solid #e1e5eb;
+            background: white;
+            padding: 2px;
+        }
+        /* Override standard button styling for this tiny button */
+        #remove-logo-btn {
+            background: #ff4d4f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 !important;
+            margin: 0 !important;
+            box-shadow: 0 2px 4px rgba(255, 77, 79, 0.3) !important;
+        }
+        #remove-logo-btn:hover {
+            background: #d9363e;
+            transform: scale(1.1) !important;
+        }
+
+        /* Animated Buttons */
+        button {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(0, 123, 255, 0.3);
+            background: linear-gradient(135deg, #0066cc, #004499);
+        }
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+        }
+        
+        #save-btn {
+            background: linear-gradient(135deg, #28a745, #1e7e34);
+            box-shadow: 0 4px 6px rgba(40, 167, 69, 0.2);
+            display: none;
+            margin-top: 10px;
+        }
+        #save-btn:hover {
+            background: linear-gradient(135deg, #218838, #19692c);
+            box-shadow: 0 7px 14px rgba(40, 167, 69, 0.3);
+        }
+
+        #qrcode {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        #qrcode canvas, #qrcode svg {
+            width: 100% !important;
+            max-width: 250px !important;
+            height: auto !important;
+            border-radius: 10px; /* Gives the QR container a softer edge */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Adds a subtle shadow to the QR code */
+        }
+
+        /* Sound Feedback Controls */
+        .utility-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: #64748b;
+        }
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .toggle-switch input {
+            display: none;
+        }
+        .switch-track {
+            width: 34px;
+            height: 20px;
+            background-color: #cbd5e1;
+            border-radius: 10px;
+            position: relative;
+            transition: background-color 0.2s;
+        }
+        .switch-track::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: white;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.2s;
+        }
+        .toggle-switch input:checked + .switch-track {
+            background-color: #28a745;
+        }
+        .toggle-switch input:checked + .switch-track::after {
+            transform: translateX(14px);
+        }
+
+        /* Custom Modern Toast Notification System (Replaces browser Alert) */
+        .toast {
+            position: fixed;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 14px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: bottom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toast.show {
+            bottom: 30px;
+        }
+        .toast-warning {
+            border-left: 4px solid #ff9f43;
+        }
+        .toast-success {
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>QR Generator Pro Coming Soon</h2>
+        
+        <div class="utility-row">
+            <span><a href="mailto:ashiqur@cariowns.xyz" style="font-weight: 600; color: #c54b6c; text-decoration: none;">Feedback</a></span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="sound-toggle" checked>
+                <div class="switch-track"></div>
+                <span style="font-weight: 600;">Sound Effect</span>
+            </label>
+        </div>
+
+        <!-- Changed to a textarea to allow multi-line text via the Enter key -->
+        <textarea id="text-input" placeholder="Enter link or text... (Press Enter for new lines)" rows="3"></textarea>
+        
+        <button onclick="generateQR()">Generate QR Code</button>
+        
+        <div id="qrcode"></div>
+        
+        <!-- Customization Tools Moved Below QR Code -->
+        <div id="customization-tools">
+            <div class="tool-group">
+                <label for="qr-color">QR Color:</label>
+                <input type="color" id="qr-color" value="#000000" oninput="liveUpdate()">
+            </div>
+            <!-- Background Color Picker -->
+            <div class="tool-group">
+                <label for="bg-color">BG Color:</label>
+                <input type="color" id="bg-color" value="#ffffff" oninput="liveUpdate()">
+            </div>
+            <div class="tool-group">
+                <label for="qr-style">Dot Style:</label>
+                <select id="qr-style" onchange="liveUpdate()">
+                    <option value="square">Standard</option>
+                    <option value="dots">Dots</option>
+                    <option value="rounded">Rounded</option>
+                    <option value="classy">Classy</option>
+                    <option value="extra-rounded">Extra Rounded</option>
+                </select>
+            </div>
+            <div class="tool-group">
+                <label for="qr-format">Save As:</label>
+                <select id="qr-format" onchange="liveUpdate()">
+                    <option value="png-transparent" selected>PNG (Clear BG)</option>
+                    <option value="png-solid">PNG (Solid BG)</option>
+                    <option value="jpeg">JPEG (Solid BG)</option>
+                </select>
+            </div>
+            
+            <!-- Logo Upload Section -->
+            <div class="logo-upload-group">
+                <div class="logo-upload-row">
+                    <label class="logo-upload-btn">
+                        <input type="file" id="logo-input" accept="image/png, image/jpeg, image/svg+xml" onchange="handleLogoUpload(event)">
+                        📷 Add Logo
+                    </label>
+                    <div id="logo-preview-container">
+                        <img id="logo-preview" src="" alt="Logo">
+                        <button id="remove-logo-btn" onclick="removeLogo()" title="Remove Logo">✖</button>
+                    </div>
+                </div>
+                <!-- Logo Size Slider (Hidden until logo is uploaded) -->
+                <div id="logo-size-container" class="slider-group" style="display: none; margin-top: 15px;">
+                    <!-- FIX: Set default to 20%, and Max to 30% to prevent breaking the code -->
+                    <label for="logo-size">Logo Size: <span id="logo-size-val">20%</span></label>
+                    <input type="range" id="logo-size" min="10" max="30" value="20" oninput="updateLogoSizeLabel(); liveUpdate();">
+                </div>
+            </div>
+
+            <!-- Quality Slider -->
+            <div class="slider-group">
+                <label for="qr-quality">Download Quality: <span id="quality-val">Standard (1024x1024)</span></label>
+                <input type="range" id="qr-quality" min="1" max="5" value="2" oninput="updateQualityLabel()">
+            </div>
+        </div>
+
+        <button id="save-btn" onclick="downloadQR()">Save to Device</button>
+    </div>
+
+    <!-- Custom Toast Message Element -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        let currentLogoDataUrl = null; // Memory for the uploaded logo
+        let audioCtx = null; // Web Audio Context
+
+        const qrCode = new QRCodeStyling({
+            width: 1024,
+            height: 1024, 
+            margin: 40, /* ADDED MARGIN: Zooms out the QR Code structure slightly within the canvas so square corners don't clip */
+            type: "canvas", 
+            qrOptions: {
+                errorCorrectionLevel: 'H' /* CRITICAL FIX: 'High' error correction generates backup data so the code survives the logo */
+            },
+            imageOptions: {
+                crossOrigin: "anonymous",
+                margin: 15, 
+                imageSize: 0.2, /* Default to safe 20% size */
+                hideBackgroundDots: true 
+            }
+        });
+
+        // Initialize AudioContext on user action
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        // Play smooth chime audio synthesised with Web Audio API
+        function playChime() {
+            if (!document.getElementById("sound-toggle").checked) return;
+            
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const now = audioCtx.currentTime;
+            
+            // Soft Harmonic frequencies for a clean premium sound
+            const freqs = [523.25, 659.25, 783.99, 1046.50]; // Beautiful C Major Chord (C5, E5, G5, C6)
+            
+            freqs.forEach((freq, index) => {
+                const osc = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now + (index * 0.05)); // Staggered arpeggio effect
+                
+                // Set envelope to avoid clicking sounds
+                gainNode.gain.setValueAtTime(0, now);
+                gainNode.gain.linearRampToValueAtTime(0.06, now + (index * 0.05) + 0.02); // Low soft volume limit
+                gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 0.8 + (index * 0.05)); // Decay nicely
+                
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                osc.start(now + (index * 0.05));
+                osc.stop(now + 0.8 + (index * 0.05));
+            });
+        }
+
+        // Modern, smooth visual notification replaces ugly alert dialogue box
+        function showToast(message, type = 'warning') {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.className = `toast toast-${type} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
+        }
+
+        function updateQRCodeSettings() {
+            let text = document.getElementById("text-input").value;
+            let color = document.getElementById("qr-color").value;
+            let bgColor = document.getElementById("bg-color").value; 
+            let style = document.getElementById("qr-style").value;
+            let format = document.getElementById("qr-format").value;
+            
+            let finalBgColor = (format === "png-transparent") ? "transparent" : bgColor;
+            
+            let logoSizeVal = parseInt(document.getElementById("logo-size").value) / 100;
+
+            qrCode.update({
+                data: text,
+                image: currentLogoDataUrl || "", 
+                margin: 40, /* Keep visual quiet zone margin active during updates */
+                qrOptions: {
+                    errorCorrectionLevel: 'H' // Ensure it always stays on High
+                },
+                dotsOptions: {
+                    color: color,
+                    type: style
+                },
+                backgroundOptions: {
+                    color: finalBgColor,
+                },
+                imageOptions: {
+                    crossOrigin: "anonymous",
+                    margin: 15,
+                    imageSize: logoSizeVal, 
+                    hideBackgroundDots: true 
+                }
+            });
+        }
+
+        function generateQR() {
+            let text = document.getElementById("text-input").value;
+            if (text.trim() === "") {
+                showToast("⚠️ Please enter some text or a URL first!", "warning");
+                return;
+            }
+
+            // Init Web Audio API Context
+            initAudio();
+
+            updateQRCodeSettings();
+
+            document.getElementById("qrcode").innerHTML = "";
+            qrCode.append(document.getElementById("qrcode"));
+            
+            document.getElementById("customization-tools").style.display = "flex";
+            document.getElementById("save-btn").style.display = "block";
+
+            // Sound feedback
+            playChime();
+        }
+
+        // Updates the text above the slider when you drag it
+        function updateQualityLabel() {
+            let val = document.getElementById("qr-quality").value;
+            let label = "";
+            if (val == 1) label = "Low (500x500 - Small File)";
+            if (val == 2) label = "Standard (1024x1024)";
+            if (val == 3) label = "High (2048x2048 - ~1MB)";
+            if (val == 4) label = "Ultra (3000x3000 - ~2MB)";
+            if (val == 5) label = "Maximum (4000x4000 - Largest File)";
+            document.getElementById("quality-val").innerText = label;
+        }
+
+        // Updates logo size slider label
+        function updateLogoSizeLabel() {
+            let val = document.getElementById("logo-size").value;
+            document.getElementById("logo-size-val").innerText = val + "%";
+        }
+
+        // Handles the user selecting an image file
+        function handleLogoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                currentLogoDataUrl = e.target.result;
+                document.getElementById("logo-preview").src = currentLogoDataUrl;
+                document.getElementById("logo-preview-container").style.display = "flex";
+                document.getElementById("logo-size-container").style.display = "flex"; // SHOW SLIDER
+                liveUpdate(); // instantly update QR code
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Handles clicking the red X
+        function removeLogo() {
+            currentLogoDataUrl = null;
+            document.getElementById("logo-input").value = "";
+            document.getElementById("logo-preview-container").style.display = "none";
+            document.getElementById("logo-size-container").style.display = "none"; // HIDE SLIDER
+            liveUpdate(); // instantly update QR code
+        }
+
+        function liveUpdate() {
+            if (document.getElementById("save-btn").style.display === "block") {
+                updateQRCodeSettings();
+            }
+        }
+
+        function downloadQR() {
+            updateQRCodeSettings();
+            
+            let format = document.getElementById("qr-format").value;
+            // Both PNG options save as .png, JPEG saves as .jpeg
+            let fileExtension = (format === "jpeg") ? "jpeg" : "png";
+            
+            // Map the slider 1-5 to actual pixel dimensions
+            let qualityLevel = document.getElementById("qr-quality").value;
+            let size = 1024; // Default to Standard
+            if (qualityLevel == 1) size = 500;
+            if (qualityLevel == 2) size = 1024;
+            if (qualityLevel == 3) size = 2048;
+            if (qualityLevel == 4) size = 3000;
+            if (qualityLevel == 5) size = 4000;
+
+            // Update the math so the file downloads at the exact requested quality
+            qrCode.update({
+                width: size,
+                height: size,
+                margin: 40 /* Ensure the margin persists when rendering high-res files */
+            });
+
+            // Trigger the download!
+            qrCode.download({ name: "my-custom-qr", extension: fileExtension });
+
+            // Haptic feedback (Vibration)
+            if (navigator.vibrate) {
+                // Short double-pulse vibration (100ms vibration, 50ms gap, 100ms vibration)
+                navigator.vibrate([100, 50, 100]);
+            }
+            
+            showToast("📥 Downloading QR Code to device...", "success");
+        }
+    </script>
+
+</body>
+</html>
