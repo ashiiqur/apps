@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  This page is a generic template. Everything app-specific - SEO/social
+  meta, favicon, logo, hero copy, features, footer, and the download
+  links below - is filled in from two files loaded next:
+  app.details.js and platforms.config.js. Edit those two files for a
+  new app; you should not need to edit this file.
+-->
+
+<!--
+  STATIC FALLBACK TAGS FOR THIS DEPLOYED APP (QR Generator)
+  ==========================================================
+  Everything below duplicates, as plain non-JS HTML, what the script
+  further down injects dynamically from app.details.js. This is
+  needed because most link-preview bots (Facebook, X/Twitter,
+  WhatsApp, Discord, Slack, iMessage, LinkedIn) fetch the raw HTML
+  and do NOT execute JavaScript, so without this block they'd see no
+  title, no description, and no image at all. Google and other
+  JS-rendering crawlers were already fine either way.
+  If you change name/seo/social/assets in app.details.js, update this
+  block to match - it will not update itself. This block is specific
+  to THIS app's deployed copy; when duplicating the folder for a new
+  app, start from the generic (un-baked) template instead of this file.
+-->
+<title>QR Generator - Create Custom QR Codes Instantly | ashiqur</title>
+<meta name="description" content="QR Generator turns links, Wi-Fi passwords, contact cards, and plain text into clean, customizable QR codes in one tap. Free on Android.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ashiqur Rahman">
+<link rel="canonical" href="https://apps.ashiqur.in/apps/qr-generator/">
+<link rel="icon" href="favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://apps.ashiqur.in/apps/qr-generator/">
+<meta property="og:site_name" content="ashiqur">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="QR Generator - Create Custom QR Codes Instantly">
+<meta property="og:description" content="Turn links, Wi-Fi passwords, contact cards, and plain text into a clean QR code in one tap. Free on Android.">
+<meta property="og:image" content="https://apps.ashiqur.in/apps/qr-generator/preview-image.png">
+<meta property="og:image:secure_url" content="https://apps.ashiqur.in/apps/qr-generator/preview-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="QR Generator app preview">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QR Generator - Create Custom QR Codes Instantly">
+<meta name="twitter:description" content="Turn links, Wi-Fi passwords, contact cards, and plain text into a clean QR code in one tap. Free on Android.">
+<meta name="twitter:image" content="https://apps.ashiqur.in/apps/qr-generator/preview-image.png">
+<meta name="twitter:image:alt" content="QR Generator app preview">
+
+<meta name="theme-color" content="#F4F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161A" media="(prefers-color-scheme: dark)">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QR Generator",
+  "url": "https://apps.ashiqur.in/apps/qr-generator/",
+  "image": "https://apps.ashiqur.in/apps/qr-generator/preview-image.png",
+  "description": "QR Generator turns links, Wi-Fi passwords, contact cards, and plain text into clean, customizable QR codes in one tap. Free on Android.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "ANDROID",
+  "author": { "@type": "Person", "name": "Ashiqur Rahman", "alternateName": "ashiqur" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+<script src="app.details.js"></script>
+<script src="platforms.config.js"></script>
+<script>
+(function(){
+  var APP = window.APP_DETAILS || {};
+  var PLATFORMS = window.APP_PLATFORMS || [];
+
+  // ---- Shared default identity mark ----
+  // Ships with the template as the fallback favicon / header logo /
+  // hero image whenever app.details.js leaves assets.favicon,
+  // assets.logo, or assets.bigImage blank. It's a small pixel-portrait
+  // SVG with its own @media (prefers-color-scheme: dark) rule built
+  // in (see below), so on its own - e.g. as a favicon - it already
+  // matches the visitor's device/browser theme; inline (header, hero)
+  // it also picks up --accent like everything else on the page.
+  var DEFAULT_MARK_SVG = `<svg class="app-default-mark" viewBox="2 2 28 28" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="Pixel portrait of Ashiqur Rahman">
+<style>
+  .app-default-mark { --auto-fill: #2d4159; }
+  @media (prefers-color-scheme: dark) {
+    .app-default-mark { --auto-fill: #e8ecf2; }
+  }
+</style>
+<g fill="var(--accent, var(--auto-fill))" transform="translate(16,15) scale(0.85) translate(-16,-16.5)">
+<rect x="14" y="0" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="1" width="1" height="1" fill-opacity="0.01"/>
+<rect x="16" y="1" width="2" height="1" fill-opacity="0.01"/>
+<rect x="11" y="2" width="1" height="1" fill-opacity="0.01"/>
+<rect x="13" y="2" width="1" height="1" fill-opacity="0.04"/>
+<rect x="14" y="2" width="1" height="1" fill-opacity="0.13"/>
+<rect x="15" y="2" width="1" height="1" fill-opacity="0.08"/>
+<rect x="10" y="3" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="3" width="1" height="1" fill-opacity="0.17"/>
+<rect x="13" y="3" width="1" height="1" fill-opacity="0.85"/>
+<rect x="14" y="3" width="1" height="1" fill-opacity="0.98"/>
+<rect x="15" y="3" width="1" height="1" fill-opacity="0.93"/>
+<rect x="16" y="3" width="1" height="1" fill-opacity="0.72"/>
+<rect x="17" y="3" width="1" height="1" fill-opacity="0.25"/>
+<rect x="9" y="4" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="4" width="1" height="1" fill-opacity="0.17"/>
+<rect x="12" y="4" width="1" height="1" fill-opacity="0.91"/>
+<rect x="13" y="4" width="4" height="1"/>
+<rect x="17" y="4" width="1" height="1" fill-opacity="0.98"/>
+<rect x="18" y="4" width="1" height="1" fill-opacity="0.13"/>
+<rect x="20" y="4" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="5" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="5" width="1" height="1" fill-opacity="0.71"/>
+<rect x="12" y="5" width="1" height="1"/>
+<rect x="13" y="5" width="1" height="1" fill-opacity="0.98"/>
+<rect x="14" y="5" width="2" height="1"/>
+<rect x="16" y="5" width="1" height="1" fill-opacity="0.97"/>
+<rect x="17" y="5" width="1" height="1"/>
+<rect x="18" y="5" width="1" height="1" fill-opacity="0.41"/>
+<rect x="20" y="5" width="1" height="1" fill-opacity="0.02"/>
+<rect x="9" y="6" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="6" width="1" height="1" fill-opacity="0.53"/>
+<rect x="12" y="6" width="1" height="1"/>
+<rect x="13" y="6" width="1" height="1" fill-opacity="0.99"/>
+<rect x="14" y="6" width="2" height="1"/>
+<rect x="16" y="6" width="1" height="1" fill-opacity="0.98"/>
+<rect x="17" y="6" width="1" height="1"/>
+<rect x="18" y="6" width="1" height="1" fill-opacity="0.54"/>
+<rect x="20" y="6" width="1" height="1" fill-opacity="0.02"/>
+<rect x="12" y="7" width="1" height="1" fill-opacity="0.84"/>
+<rect x="13" y="7" width="1" height="1"/>
+<rect x="14" y="7" width="1" height="1" fill-opacity="0.99"/>
+<rect x="15" y="7" width="1" height="1"/>
+<rect x="16" y="7" width="1" height="1" fill-opacity="0.98"/>
+<rect x="17" y="7" width="1" height="1"/>
+<rect x="18" y="7" width="1" height="1" fill-opacity="0.45"/>
+<rect x="20" y="7" width="1" height="1" fill-opacity="0.02"/>
+<rect x="11" y="8" width="1" height="1" fill-opacity="0.03"/>
+<rect x="12" y="8" width="1" height="1" fill-opacity="0.83"/>
+<rect x="13" y="8" width="1" height="1"/>
+<rect x="14" y="8" width="1" height="1" fill-opacity="0.99"/>
+<rect x="15" y="8" width="2" height="1"/>
+<rect x="17" y="8" width="1" height="1" fill-opacity="0.96"/>
+<rect x="18" y="8" width="1" height="1" fill-opacity="0.13"/>
+<rect x="20" y="8" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="9" width="2" height="1" fill-opacity="0.01"/>
+<rect x="12" y="9" width="1" height="1" fill-opacity="0.66"/>
+<rect x="13" y="9" width="2" height="1" fill-opacity="0.99"/>
+<rect x="15" y="9" width="1" height="1" fill-opacity="0.98"/>
+<rect x="16" y="9" width="1" height="1"/>
+<rect x="17" y="9" width="1" height="1" fill-opacity="0.56"/>
+<rect x="19" y="9" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="10" width="1" height="1" fill-opacity="0.02"/>
+<rect x="12" y="10" width="1" height="1" fill-opacity="0.48"/>
+<rect x="13" y="10" width="1" height="1"/>
+<rect x="14" y="10" width="1" height="1" fill-opacity="0.98"/>
+<rect x="15" y="10" width="2" height="1"/>
+<rect x="17" y="10" width="1" height="1" fill-opacity="0.17"/>
+<rect x="18" y="10" width="1" height="1" fill-opacity="0.02"/>
+<rect x="19" y="10" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="11" width="1" height="1" fill-opacity="0.02"/>
+<rect x="12" y="11" width="1" height="1" fill-opacity="0.04"/>
+<rect x="13" y="11" width="1" height="1" fill-opacity="0.26"/>
+<rect x="14" y="11" width="1" height="1" fill-opacity="0.87"/>
+<rect x="15" y="11" width="2" height="1"/>
+<rect x="17" y="11" width="1" height="1" fill-opacity="0.33"/>
+<rect x="20" y="11" width="1" height="1" fill-opacity="0.02"/>
+<rect x="21" y="11" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="12" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="12" width="1" height="1" fill-opacity="0.2"/>
+<rect x="13" y="12" width="1" height="1" fill-opacity="0.58"/>
+<rect x="14" y="12" width="2" height="1" fill-opacity="0.99"/>
+<rect x="16" y="12" width="1" height="1"/>
+<rect x="17" y="12" width="1" height="1" fill-opacity="0.92"/>
+<rect x="18" y="12" width="1" height="1" fill-opacity="0.36"/>
+<rect x="19" y="12" width="1" height="1" fill-opacity="0.05"/>
+<rect x="22" y="12" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="13" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="13" width="1" height="1" fill-opacity="0.4"/>
+<rect x="11" y="13" width="1" height="1" fill-opacity="0.82"/>
+<rect x="12" y="13" width="7" height="1"/>
+<rect x="19" y="13" width="1" height="1" fill-opacity="0.88"/>
+<rect x="20" y="13" width="1" height="1" fill-opacity="0.56"/>
+<rect x="21" y="13" width="1" height="1" fill-opacity="0.15"/>
+<rect x="7" y="14" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="14" width="1" height="1" fill-opacity="0.53"/>
+<rect x="10" y="14" width="3" height="1"/>
+<rect x="13" y="14" width="1" height="1" fill-opacity="0.99"/>
+<rect x="14" y="14" width="4" height="1"/>
+<rect x="18" y="14" width="1" height="1" fill-opacity="0.99"/>
+<rect x="19" y="14" width="2" height="1"/>
+<rect x="21" y="14" width="1" height="1" fill-opacity="0.95"/>
+<rect x="22" y="14" width="1" height="1" fill-opacity="0.26"/>
+<rect x="24" y="14" width="1" height="1" fill-opacity="0.01"/>
+<rect x="6" y="15" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="15" width="1" height="1" fill-opacity="0.15"/>
+<rect x="9" y="15" width="1" height="1"/>
+<rect x="10" y="15" width="2" height="1" fill-opacity="0.99"/>
+<rect x="12" y="15" width="8" height="1"/>
+<rect x="20" y="15" width="1" height="1" fill-opacity="0.97"/>
+<rect x="21" y="15" width="1" height="1"/>
+<rect x="22" y="15" width="1" height="1" fill-opacity="0.78"/>
+<rect x="24" y="15" width="1" height="1" fill-opacity="0.01"/>
+<rect x="6" y="16" width="1" height="1" fill-opacity="0.02"/>
+<rect x="8" y="16" width="1" height="1" fill-opacity="0.42"/>
+<rect x="9" y="16" width="1" height="1"/>
+<rect x="10" y="16" width="1" height="1" fill-opacity="0.98"/>
+<rect x="11" y="16" width="11" height="1"/>
+<rect x="22" y="16" width="1" height="1" fill-opacity="0.91"/>
+<rect x="23" y="16" width="1" height="1" fill-opacity="0.05"/>
+<rect x="6" y="17" width="1" height="1" fill-opacity="0.02"/>
+<rect x="8" y="17" width="1" height="1" fill-opacity="0.51"/>
+<rect x="9" y="17" width="1" height="1"/>
+<rect x="10" y="17" width="2" height="1" fill-opacity="0.98"/>
+<rect x="12" y="17" width="1" height="1" fill-opacity="0.99"/>
+<rect x="13" y="17" width="6" height="1"/>
+<rect x="19" y="17" width="3" height="1" fill-opacity="0.99"/>
+<rect x="22" y="17" width="1" height="1" fill-opacity="0.95"/>
+<rect x="23" y="17" width="1" height="1" fill-opacity="0.1"/>
+<rect x="6" y="18" width="2" height="1" fill-opacity="0.01"/>
+<rect x="8" y="18" width="1" height="1" fill-opacity="0.79"/>
+<rect x="9" y="18" width="1" height="1" fill-opacity="0.98"/>
+<rect x="10" y="18" width="1" height="1" fill-opacity="0.99"/>
+<rect x="11" y="18" width="7" height="1"/>
+<rect x="18" y="18" width="1" height="1" fill-opacity="0.99"/>
+<rect x="19" y="18" width="3" height="1"/>
+<rect x="22" y="18" width="1" height="1" fill-opacity="0.97"/>
+<rect x="23" y="18" width="1" height="1" fill-opacity="0.06"/>
+<rect x="6" y="19" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="19" width="1" height="1" fill-opacity="0.48"/>
+<rect x="9" y="19" width="1" height="1"/>
+<rect x="10" y="19" width="1" height="1" fill-opacity="0.99"/>
+<rect x="11" y="19" width="1" height="1" fill-opacity="0.38"/>
+<rect x="12" y="19" width="1" height="1" fill-opacity="0.76"/>
+<rect x="13" y="19" width="1" height="1"/>
+<rect x="14" y="19" width="2" height="1" fill-opacity="0.99"/>
+<rect x="16" y="19" width="3" height="1"/>
+<rect x="19" y="19" width="1" height="1" fill-opacity="0.69"/>
+<rect x="20" y="19" width="1" height="1" fill-opacity="0.79"/>
+<rect x="21" y="19" width="1" height="1" fill-opacity="0.63"/>
+<rect x="22" y="19" width="1" height="1" fill-opacity="0.79"/>
+<rect x="23" y="19" width="1" height="1" fill-opacity="0.26"/>
+<rect x="25" y="19" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="20" width="1" height="1" fill-opacity="0.03"/>
+<rect x="9" y="20" width="1" height="1" fill-opacity="0.63"/>
+<rect x="10" y="20" width="1" height="1" fill-opacity="0.91"/>
+<rect x="11" y="20" width="1" height="1" fill-opacity="0.37"/>
+<rect x="12" y="20" width="1" height="1" fill-opacity="0.48"/>
+<rect x="13" y="20" width="4" height="1"/>
+<rect x="17" y="20" width="1" height="1" fill-opacity="0.44"/>
+<rect x="18" y="20" width="1" height="1" fill-opacity="0.8"/>
+<rect x="19" y="20" width="1" height="1" fill-opacity="0.2"/>
+<rect x="20" y="20" width="1" height="1" fill-opacity="0.33"/>
+<rect x="21" y="20" width="1" height="1" fill-opacity="0.4"/>
+<rect x="22" y="20" width="1" height="1" fill-opacity="0.77"/>
+<rect x="23" y="20" width="1" height="1" fill-opacity="0.76"/>
+<rect x="25" y="20" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="21" width="1" height="1" fill-opacity="0.88"/>
+<rect x="11" y="21" width="1" height="1" fill-opacity="0.93"/>
+<rect x="12" y="21" width="1" height="1" fill-opacity="0.86"/>
+<rect x="13" y="21" width="1" height="1" fill-opacity="0.64"/>
+<rect x="14" y="21" width="1" height="1" fill-opacity="0.24"/>
+<rect x="15" y="21" width="1" height="1" fill-opacity="0.8"/>
+<rect x="16" y="21" width="1" height="1"/>
+<rect x="17" y="21" width="1" height="1" fill-opacity="0.19"/>
+<rect x="18" y="21" width="1" height="1" fill-opacity="0.25"/>
+<rect x="19" y="21" width="1" height="1" fill-opacity="0.46"/>
+<rect x="20" y="21" width="1" height="1" fill-opacity="0.76"/>
+<rect x="21" y="21" width="1" height="1" fill-opacity="0.66"/>
+<rect x="22" y="21" width="1" height="1" fill-opacity="0.17"/>
+<rect x="23" y="21" width="1" height="1" fill-opacity="0.24"/>
+<rect x="8" y="22" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="22" width="1" height="1" fill-opacity="0.31"/>
+<rect x="10" y="22" width="1" height="1" fill-opacity="0.47"/>
+<rect x="11" y="22" width="1" height="1" fill-opacity="0.3"/>
+<rect x="12" y="22" width="1" height="1" fill-opacity="0.98"/>
+<rect x="13" y="22" width="1" height="1" fill-opacity="0.69"/>
+<rect x="14" y="22" width="1" height="1" fill-opacity="0.25"/>
+<rect x="15" y="22" width="1" height="1" fill-opacity="0.17"/>
+<rect x="16" y="22" width="1" height="1" fill-opacity="0.94"/>
+<rect x="17" y="22" width="1" height="1" fill-opacity="0.65"/>
+<rect x="18" y="22" width="1" height="1" fill-opacity="0.24"/>
+<rect x="19" y="22" width="1" height="1" fill-opacity="0.85"/>
+<rect x="20" y="22" width="1" height="1" fill-opacity="0.84"/>
+<rect x="21" y="22" width="1" height="1" fill-opacity="0.25"/>
+<rect x="22" y="22" width="1" height="1" fill-opacity="0.58"/>
+<rect x="23" y="22" width="1" height="1" fill-opacity="0.17"/>
+<rect x="25" y="22" width="1" height="1" fill-opacity="0.01"/>
+<rect x="7" y="23" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="23" width="1" height="1" fill-opacity="0.53"/>
+<rect x="10" y="23" width="1" height="1" fill-opacity="0.23"/>
+<rect x="11" y="23" width="1" height="1" fill-opacity="0.05"/>
+<rect x="12" y="23" width="1" height="1" fill-opacity="0.99"/>
+<rect x="13" y="23" width="1" height="1"/>
+<rect x="14" y="23" width="1" height="1" fill-opacity="0.6"/>
+<rect x="16" y="23" width="1" height="1" fill-opacity="0.56"/>
+<rect x="17" y="23" width="1" height="1" fill-opacity="0.87"/>
+<rect x="18" y="23" width="1" height="1" fill-opacity="0.11"/>
+<rect x="19" y="23" width="1" height="1"/>
+<rect x="20" y="23" width="1" height="1" fill-opacity="0.71"/>
+<rect x="22" y="23" width="1" height="1" fill-opacity="0.24"/>
+<rect x="23" y="23" width="1" height="1" fill-opacity="0.07"/>
+<rect x="10" y="24" width="1" height="1" fill-opacity="0.22"/>
+<rect x="11" y="24" width="1" height="1" fill-opacity="0.05"/>
+<rect x="12" y="24" width="1" height="1" fill-opacity="0.92"/>
+<rect x="13" y="24" width="2" height="1"/>
+<rect x="15" y="24" width="1" height="1" fill-opacity="0.03"/>
+<rect x="16" y="24" width="1" height="1" fill-opacity="0.48"/>
+<rect x="17" y="24" width="1" height="1" fill-opacity="0.98"/>
+<rect x="18" y="24" width="1" height="1" fill-opacity="0.03"/>
+<rect x="19" y="24" width="1" height="1" fill-opacity="0.47"/>
+<rect x="20" y="24" width="1" height="1" fill-opacity="0.64"/>
+<rect x="21" y="24" width="1" height="1" fill-opacity="0.26"/>
+<rect x="22" y="24" width="1" height="1" fill-opacity="0.07"/>
+<rect x="23" y="24" width="1" height="1" fill-opacity="0.02"/>
+<rect x="11" y="25" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="25" width="1" height="1" fill-opacity="0.44"/>
+<rect x="13" y="25" width="1" height="1" fill-opacity="0.97"/>
+<rect x="14" y="25" width="1" height="1" fill-opacity="0.84"/>
+<rect x="15" y="25" width="1" height="1" fill-opacity="0.26"/>
+<rect x="16" y="25" width="1" height="1" fill-opacity="0.95"/>
+<rect x="17" y="25" width="1" height="1"/>
+<rect x="18" y="25" width="1" height="1" fill-opacity="0.17"/>
+<rect x="19" y="25" width="1" height="1" fill-opacity="0.58"/>
+<rect x="20" y="25" width="1" height="1" fill-opacity="0.18"/>
+<rect x="21" y="25" width="1" height="1" fill-opacity="0.12"/>
+<rect x="9" y="26" width="1" height="1" fill-opacity="0.03"/>
+<rect x="10" y="26" width="1" height="1" fill-opacity="0.87"/>
+<rect x="11" y="26" width="1" height="1" fill-opacity="0.41"/>
+<rect x="12" y="26" width="1" height="1" fill-opacity="0.15"/>
+<rect x="13" y="26" width="1" height="1" fill-opacity="0.41"/>
+<rect x="14" y="26" width="1" height="1" fill-opacity="0.24"/>
+<rect x="15" y="26" width="1" height="1" fill-opacity="0.61"/>
+<rect x="16" y="26" width="2" height="1"/>
+<rect x="18" y="26" width="1" height="1" fill-opacity="0.24"/>
+<rect x="19" y="26" width="1" height="1" fill-opacity="0.15"/>
+<rect x="20" y="26" width="1" height="1" fill-opacity="0.05"/>
+<rect x="9" y="27" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="27" width="1" height="1" fill-opacity="0.45"/>
+<rect x="11" y="27" width="1" height="1" fill-opacity="0.14"/>
+<rect x="12" y="27" width="1" height="1" fill-opacity="0.12"/>
+<rect x="13" y="27" width="1" height="1" fill-opacity="0.09"/>
+<rect x="15" y="27" width="1" height="1" fill-opacity="0.83"/>
+<rect x="16" y="27" width="2" height="1"/>
+<rect x="18" y="27" width="1" height="1" fill-opacity="0.14"/>
+<rect x="14" y="28" width="1" height="1" fill-opacity="0.17"/>
+<rect x="15" y="28" width="1" height="1" fill-opacity="0.88"/>
+<rect x="16" y="28" width="1" height="1" fill-opacity="0.82"/>
+<rect x="17" y="28" width="1" height="1" fill-opacity="0.5"/>
+<rect x="19" y="28" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="29" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="29" width="1" height="1" fill-opacity="0.02"/>
+<rect x="11" y="29" width="1" height="1" fill-opacity="0.1"/>
+<rect x="12" y="29" width="1" height="1" fill-opacity="0.9"/>
+<rect x="13" y="29" width="1" height="1" fill-opacity="0.31"/>
+<rect x="14" y="29" width="1" height="1" fill-opacity="0.09"/>
+<rect x="15" y="29" width="1" height="1" fill-opacity="0.08"/>
+<rect x="16" y="29" width="1" height="1" fill-opacity="0.34"/>
+<rect x="17" y="29" width="1" height="1" fill-opacity="0.29"/>
+<rect x="19" y="29" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="30" width="1" height="1" fill-opacity="0.04"/>
+<rect x="12" y="30" width="1" height="1" fill-opacity="0.45"/>
+<rect x="13" y="30" width="2" height="1" fill-opacity="0.11"/>
+<rect x="16" y="30" width="1" height="1" fill-opacity="0.35"/>
+<rect x="17" y="30" width="1" height="1" fill-opacity="0.36"/>
+<rect x="19" y="30" width="1" height="1" fill-opacity="0.01"/>
+<rect x="14" y="31" width="1" height="1" fill-opacity="0.14"/>
+<rect x="15" y="31" width="1" height="1" fill-opacity="0.03"/>
+</g>
+</svg>`;
+  function svgDataUri(svg){ return 'data:image/svg+xml,' + encodeURIComponent(svg); }
+  window.APP_DEFAULT_MARK_SVG = DEFAULT_MARK_SVG;
+
+  // Tries each URL in order (skipping blanks), and calls back with the
+  // first one that actually loads. A data: URI is assumed valid
+  // without a network round-trip. If nothing in the list loads - a
+  // file is missing, misspelled, or still being uploaded - it calls
+  // back with the built-in avatar mark instead, so a bad path never
+  // shows a broken-image icon in the header or browser tab.
+  function pickFirstLoadable(urls, callback){
+    var candidates = (urls || []).filter(function (u) { return !!u; });
+    var fallback = svgDataUri(DEFAULT_MARK_SVG);
+    function tryAt(i){
+      if (i >= candidates.length){ callback(fallback, false); return; }
+      var url = candidates[i];
+      if (url.indexOf('data:') === 0){ callback(url, true); return; }
+      var probe = new Image();
+      probe.onload = function () { callback(url, true); };
+      probe.onerror = function () { tryAt(i + 1); };
+      probe.src = url;
+    }
+    tryAt(0);
+  }
+  window.APP_pickFirstLoadable = pickFirstLoadable;
+
+  function setMeta(attr, key, content){
+    if (content === undefined || content === null || content === '') return;
+    var el = document.querySelector('meta[' + attr + '="' + key + '"]');
+    if (!el){
+      el = document.createElement('meta');
+      el.setAttribute(attr, key);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
+  }
+  // Guesses a MIME type from a data: URI header or a file extension
+  // (favicon.png, logo.jpg, icon.ico, mark.svg, ...) so uploaded
+  // image files get a correct type="" on their <link>, the same way
+  // the inline SVG data URIs already did. Returns null for anything
+  // unrecognized (rel="icon" then just omits type, which browsers
+  // handle fine too).
+  function guessMimeType(href){
+    if (!href) return null;
+    if (href.indexOf('data:') === 0){
+      var dataMatch = href.match(/^data:([^;,]+)/);
+      return dataMatch ? dataMatch[1] : null;
+    }
+    var clean = href.split('#')[0].split('?')[0];
+    var ext = (clean.split('.').pop() || '').toLowerCase();
+    var extToMime = {
+      png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg',
+      svg: 'image/svg+xml', gif: 'image/gif', webp: 'image/webp',
+      ico: 'image/x-icon'
+    };
+    return extToMime[ext] || null;
+  }
+  function setLink(rel, href, extraAttrs){
+    if (!href) return;
+    var el = document.querySelector('link[rel="' + rel + '"]');
+    if (!el){
+      el = document.createElement('link');
+      el.setAttribute('rel', rel);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('href', href);
+    if (rel === 'icon'){
+      var mime = guessMimeType(href);
+      if (mime) el.setAttribute('type', mime); else el.removeAttribute('type');
+    }
+    if (extraAttrs){
+      for (var k in extraAttrs){ el.setAttribute(k, extraAttrs[k]); }
+    }
+  }
+
+  var seo = APP.seo || {};
+  var social = APP.social || {};
+  var assets = APP.assets || {};
+  var schema = APP.schema || {};
+  var author = APP.author || {};
+
+  // ---- Title / description / canonical / robots ----
+  if (seo.title) document.title = seo.title;
+  setMeta('name', 'description', seo.description);
+  setMeta('name', 'robots', seo.robots || 'index, follow');
+  setMeta('name', 'author', author.name);
+  setLink('canonical', APP.url);
+
+  // ---- Open Graph ----
+  setMeta('property', 'og:type', 'website');
+  setMeta('property', 'og:url', APP.url);
+  setMeta('property', 'og:site_name', APP.siteName);
+  setMeta('property', 'og:locale', APP.locale || 'en_US');
+  setMeta('property', 'og:title', social.title || seo.title);
+  setMeta('property', 'og:description', social.description || seo.description);
+
+  // ---- Twitter / X ----
+  setMeta('name', 'twitter:card', 'summary_large_image');
+  setMeta('name', 'twitter:title', social.title || seo.title);
+  setMeta('name', 'twitter:description', social.description || seo.description);
+
+  // ---- Theme / icons ----
+  // Two theme-color tags (one per color-scheme) so browser chrome
+  // (address bar, PWA splash, etc.) follows the visitor's
+  // device/browser theme automatically, same as the CSS below.
+  function setThemeColorMeta(content, media){
+    if (!content) return;
+    var el = document.createElement('meta');
+    el.setAttribute('name', 'theme-color');
+    el.setAttribute('content', content);
+    el.setAttribute('media', media);
+    document.head.appendChild(el);
+  }
+  setThemeColorMeta(APP.themeColor, '(prefers-color-scheme: light)');
+  setThemeColorMeta(APP.themeColorDark || APP.themeColor, '(prefers-color-scheme: dark)');
+  // Favicon: only set the browser tab icon once favicon.png actually
+  // loads. No avatar fallback here - if it's missing, misnamed, or
+  // fails to load, no custom favicon is set at all (the browser's own
+  // default is used instead, rather than the pixel-portrait mark).
+  pickFirstLoadable([assets.favicon], function (resolvedUrl, isRealAsset) {
+    if (isRealAsset) setLink('icon', resolvedUrl);
+  });
+  // Apple touch icon: prefer the logo, then the favicon, then the avatar.
+  setLink('apple-touch-icon', svgDataUri(DEFAULT_MARK_SVG));
+  pickFirstLoadable([assets.logo, assets.favicon], function (resolvedUrl, isRealAsset) {
+    if (isRealAsset) setLink('apple-touch-icon', resolvedUrl);
+  });
+  if (APP.appStoreId) setMeta('name', 'apple-itunes-app', 'app-id=' + APP.appStoreId);
+  if (APP.accentColor) document.documentElement.style.setProperty('--accent', APP.accentColor);
+
+  // ---- Link-preview image (og:image / twitter:image) + JSON-LD ----
+  // Test-loads assets.bigImage (preview-image.png). If it's missing
+  // or fails to load, every image-dependent tag below - including
+  // JSON-LD's "image" field - falls back to the avatar instead of
+  // pointing crawlers at a broken link. Width/height are only
+  // claimed for a real photo/screenshot, since the avatar mark isn't
+  // actually 1200x630 - let crawlers size it themselves in that case.
+  pickFirstLoadable([assets.bigImage], function (resolvedImage, isRealAsset) {
+    setMeta('property', 'og:image', resolvedImage);
+    setMeta('property', 'og:image:secure_url', resolvedImage);
+    if (isRealAsset){
+      setMeta('property', 'og:image:width', String(social.imageWidth || 1200));
+      setMeta('property', 'og:image:height', String(social.imageHeight || 630));
+    }
+    setMeta('property', 'og:image:alt', social.imageAlt);
+    setMeta('name', 'twitter:image', resolvedImage);
+    setMeta('name', 'twitter:image:alt', social.imageAlt);
+
+    // ---- JSON-LD structured data ----
+    var operatingSystem = schema.operatingSystem;
+    if (!operatingSystem){
+      operatingSystem = PLATFORMS.filter(function(p){ return p.available; })
+        .map(function(p){ return (p.label || '').toUpperCase(); })
+        .join(', ');
+    }
+    var ld = {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: APP.name,
+      url: APP.url,
+      image: resolvedImage,
+      description: seo.description,
+      applicationCategory: schema.applicationCategory,
+      operatingSystem: operatingSystem,
+      author: { '@type': 'Person', name: author.name, alternateName: author.alternateName },
+      offers: {
+        '@type': 'Offer',
+        price: schema.price != null ? String(schema.price) : '0',
+        priceCurrency: schema.currency || 'USD'
+      }
+    };
+    var ldScript = document.querySelector('script[type="application/ld+json"]');
+    if (!ldScript){
+      ldScript = document.createElement('script');
+      ldScript.type = 'application/ld+json';
+      document.head.appendChild(ldScript);
+    }
+    ldScript.textContent = JSON.stringify(ld, null, 2);
+  });
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper: #F4F5F0;
+    --paper-raised: #FFFFFF;
+    --ink: #14161A;
+    --ink-soft: #55585F;
+    --accent: #2F6FED;
+    --accent-2: #00C896;
+    --line: #DBDDD6;
+    --radius: 14px;
+    --wrap: 1080px;
+  }
+
+  /* Color theme follows the visitor's device/browser setting only -
+     there is no in-page toggle. Every color on the page reads one of
+     the tokens above, so re-pointing them here is enough to re-theme
+     everything at once, including the default pixel-mark SVG (it
+     reads --accent the same way the rest of the page does). */
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper: #14161A;
+      --paper-raised: #1B1E24;
+      --ink: #F4F5F0;
+      --ink-soft: #A6A9B1;
+      --line: #2B2E36;
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 24px; }
+  a{color:inherit;}
+  :focus-visible{ outline:2.5px solid var(--accent); outline-offset:3px; border-radius:4px; }
+
+  h1,h2,h3{ font-family:'Space Mono', monospace; font-weight:700; margin:0; letter-spacing:-0.01em; }
+  .eyebrow-text, .eyebrow-note, .section-label, .cta-meta, .brand-text, .platform-eyebrow{
+    font-family:'Space Mono', monospace; text-transform:uppercase; letter-spacing:0.08em;
+  }
+
+  /* Screen-reader-only text: invisible on screen, present for assistive
+     tech, crawlers, and AI agents reading the page's accessible content. */
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* ---------- Header ---------- */
+  .site-header{ border-bottom:1px solid var(--line); }
+  .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:20px 24px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand-mark{ width:32px; height:32px; flex-shrink:0; color:var(--ink); }
+  .brand-mark svg{ display:block; width:100%; height:100%; }
+  .brand-mark img{ display:block; width:100%; height:100%; object-fit:contain; }
+  .brand-text{ font-size:13px; font-weight:700; }
+  .header-nav{ display:flex; gap:18px; }
+  .header-nav a{
+    font-size:14px; text-decoration:none; color:var(--ink-soft);
+    border-bottom:1px solid transparent; padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .header-nav a:hover{ color:var(--ink); border-color:var(--ink); }
+
+  /* ---------- Hero ---------- */
+  .hero{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; padding:64px 24px 72px; }
+  .eyebrow-row{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
+  .eyebrow-text{ font-size:12px; color:var(--accent); }
+  .eyebrow-dot{ width:4px; height:4px; border-radius:50%; background:var(--ink-soft); flex-shrink:0; }
+  .eyebrow-note{ font-size:12px; color:var(--ink-soft); }
+  h1{ font-size:clamp(34px, 5vw, 54px); line-height:1.04; }
+  .lede{ margin:22px 0 0; max-width:46ch; color:var(--ink-soft); font-size:17px; }
+  .cta-row{ display:flex; align-items:center; gap:16px; margin-top:32px; flex-wrap:wrap; }
+  .btn-primary{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:15.5px;
+    background:var(--ink); color:var(--paper); border:none; border-radius:999px;
+    padding:15px 28px; cursor:pointer; transition:transform .15s ease, background .15s ease;
+  }
+  .btn-primary:hover{ background:var(--accent); transform:translateY(-1px); }
+  .btn-primary:active{ transform:translateY(0); }
+  .cta-meta{ font-size:11.5px; color:var(--ink-soft); }
+  .all-options-link{ display:inline-block; margin-top:18px; font-size:13.5px; color:var(--ink-soft); text-decoration:underline; text-underline-offset:3px; }
+  .all-options-link:hover{ color:var(--ink); }
+
+  .hero-visual{ display:flex; justify-content:center; }
+  .qr-grid{
+    --size:15; display:grid; grid-template-columns:repeat(var(--size), 1fr);
+    grid-template-rows:repeat(var(--size), 1fr); width:min(360px, 78vw); aspect-ratio:1/1;
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px; gap:1px; box-shadow:0 30px 60px -30px rgba(20,22,26,0.25);
+  }
+  .qr-mod{
+    border-radius:1.5px; background:transparent; transform:scale(0); opacity:0;
+    transition:transform .32s cubic-bezier(.2,.9,.3,1.3), opacity .28s ease;
+    transition-delay:calc(var(--i, 0) * 5ms);
+  }
+  .qr-mod.on{ background:var(--ink); }
+  .qr-mod.accent{ background:var(--accent); }
+  .qr-mod.on, .qr-mod.accent{ transform:scale(1); opacity:1; }
+  @media (prefers-reduced-motion: reduce){
+    .qr-mod{ transition:none; transform:scale(1); opacity:1; }
+    .qr-mod:not(.on):not(.accent){ opacity:0; }
+  }
+
+  .hero-image-frame{
+    width:min(420px, 86vw); border-radius:var(--radius); overflow:hidden;
+    border:1px solid var(--line); background:var(--paper-raised);
+    box-shadow:0 30px 60px -30px rgba(20,22,26,0.25);
+  }
+  .hero-image-frame img,
+  .hero-image-frame svg{ display:block; width:100%; height:auto; }
+  /* Extra breathing room when the frame holds the default pixel-mark
+     instead of a real screenshot/photo. */
+  .hero-image-frame--default{ padding:48px; }
+
+  /* ---------- Features ---------- */
+  .features{ padding:16px 24px 76px; }
+  .section-label{ font-size:12px; color:var(--ink-soft); margin:0 0 28px; }
+  .feature-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1px; background:var(--line);
+    border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+  }
+  .feature{ background:var(--paper-raised); padding:26px 22px 30px; }
+  .feature-icon{ width:34px; height:34px; color:var(--accent); margin-bottom:18px; }
+  .feature-icon svg{ display:block; width:100%; height:100%; }
+  .feature h3{ font-size:14px; letter-spacing:0; margin-bottom:8px; }
+  .feature p{ margin:0; font-size:13.5px; color:var(--ink-soft); line-height:1.55; }
+
+  /* ---------- Available on (grey strip) ---------- */
+  .strip-dark{
+    /* Light theme: a pale grey band. Dark theme: overridden below to a
+       darker, muted grey (not the page's near-black, not pure light
+       grey) - see the prefers-color-scheme:dark block further down. */
+    background:#E7E8E3; color:#14161A; padding:64px 24px;
+  }
+  .section-label-inverted{ color:rgba(20,22,26,0.55); }
+  .platform-cards{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; max-width:640px; }
+  .platform-card{
+    display:flex; align-items:center; gap:16px; background:rgba(20,22,26,0.045);
+    border:1px solid rgba(20,22,26,0.14); border-radius:var(--radius); padding:18px 20px;
+    text-decoration:none; color:#14161A; transition:background .15s ease, border-color .15s ease;
+  }
+  .platform-card:hover{ background:rgba(20,22,26,0.08); border-color:rgba(20,22,26,0.28); }
+  .platform-card.disabled{ opacity:.42; cursor:not-allowed; pointer-events:none; }
+  .platform-card svg{ width:28px; height:28px; flex-shrink:0; }
+  .platform-copy{ display:flex; flex-direction:column; }
+  .platform-eyebrow{ font-size:10px; color:rgba(20,22,26,0.5); margin-bottom:2px; }
+  .platform-name{ font-family:'Space Mono', monospace; font-size:14px; font-weight:700; }
+
+  @media (prefers-color-scheme: dark){
+    .strip-dark{ background:#2C2E34; color:#F4F5F0; }
+    .section-label-inverted{ color:rgba(244,245,240,0.55); }
+    .platform-card{
+      background:rgba(244,245,240,0.05); border-color:rgba(244,245,240,0.14); color:#F4F5F0;
+    }
+    .platform-card:hover{ background:rgba(244,245,240,0.1); border-color:rgba(244,245,240,0.28); }
+    .platform-eyebrow{ color:rgba(244,245,240,0.5); }
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px;
+    padding:26px 24px 40px; font-size:12.5px; color:var(--ink-soft);
+  }
+  .footer-top{ display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px; }
+  .footer-top a{ text-decoration:underline; text-underline-offset:3px; color:var(--ink-soft); }
+  .footer-top a:hover{ color:var(--ink); }
+  .footer-dot{ width:5px; height:5px; border-radius:50%; background:var(--ink-soft); flex-shrink:0; }
+  .footer-updated{ margin:0; font-size:11px; color:var(--ink-soft); opacity:.7; }
+
+  /* ---------- Modal ---------- */
+  .modal-backdrop{
+    position:fixed; inset:0; background:rgba(20,22,26,0.5); display:flex;
+    align-items:center; justify-content:center; padding:20px; z-index:50;
+  }
+  .modal-backdrop[hidden]{ display:none; }
+  .modal{
+    background:var(--paper-raised); border-radius:var(--radius); max-width:420px; width:100%;
+    padding:30px 28px 28px; position:relative; box-shadow:0 40px 80px -20px rgba(20,22,26,0.45);
+  }
+  .modal-close{
+    position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:50%;
+    border:1px solid var(--line); background:var(--paper); font-size:17px; line-height:1;
+    cursor:pointer; color:var(--ink-soft);
+  }
+  .modal-close:hover{ color:var(--ink); border-color:var(--ink); }
+  .modal h2{ font-size:17px; margin-bottom:8px; }
+  .modal p{ margin:0 0 20px; font-size:13.5px; color:var(--ink-soft); }
+  .modal-options{ display:flex; flex-direction:column; gap:10px; }
+  .modal-option{
+    display:flex; align-items:center; gap:14px; padding:14px 16px; border:1px solid var(--line);
+    border-radius:10px; text-decoration:none; color:var(--ink);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .modal-option:hover{ border-color:var(--ink); background:var(--paper); }
+  .modal-option.disabled{ opacity:.42; cursor:not-allowed; pointer-events:none; }
+  .modal-option svg{ width:24px; height:24px; flex-shrink:0; }
+
+  @media (max-width: 860px){
+    .hero{ grid-template-columns:1fr; gap:44px; padding-top:44px; }
+    .hero-visual{ order:-1; }
+    .platform-cards{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" id="brandLink" href="#">
+      <span class="brand-mark" id="brandMark" aria-hidden="true"></span>
+      <span class="brand-text" id="brandText"></span>
+    </a>
+    <nav class="header-nav" id="headerNav"></nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow-row">
+        <span class="eyebrow-text" id="heroEyebrow"></span>
+        <span class="eyebrow-dot" id="heroReleaseDot" aria-hidden="true"></span>
+        <span class="eyebrow-note" id="heroReleaseNote"></span>
+      </p>
+      <h1 id="heroHeading"></h1>
+      <p class="lede" id="heroLede"></p>
+      <div class="cta-row">
+        <button class="btn-primary" id="downloadBtn" type="button"></button>
+        <span class="cta-meta" id="heroCtaMeta"></span>
+      </div>
+      <a class="all-options-link" href="#available-on" id="heroAllOptions"></a>
+    </div>
+    <div class="hero-visual" id="heroVisual"></div>
+  </section>
+
+  <section class="features wrap" aria-label="What the app does">
+    <h2 class="section-label" id="featuresLabel"></h2>
+    <div class="feature-grid" id="featureGrid"></div>
+  </section>
+
+  <section id="available-on" class="strip-dark">
+    <div class="wrap">
+      <h2 class="section-label section-label-inverted">Available on</h2>
+      <!-- Cards are generated from platforms.config.js - see that file to add a new platform. -->
+      <div class="platform-cards" id="platformCards"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer wrap" id="siteFooter"></footer>
+
+<!-- Platform-picker modal -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>
+    <h2 id="modalTitle">Choose your platform</h2>
+    <p id="modalDesc">We couldn't automatically detect your device. Pick one:</p>
+    <!-- Options are generated from platforms.config.js -->
+    <div class="modal-options" id="modalOptions"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var APP = window.APP_DETAILS || {};
+  var PLATFORMS = window.APP_PLATFORMS || [];
+  var ICONS = window.APP_PLATFORM_ICONS || {};
+  var DEFAULT_PLATFORM_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h.01M15 9h.01M9 15h6"/></svg>';
+  // Header logo / hero-image fallback: the shared default mark defined
+  // in the first script, above (falls back further to a plain square
+  // mark if that constant is ever missing).
+  var DEFAULT_MARK_SVG = window.APP_DEFAULT_MARK_SVG ||
+    '<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="var(--accent)"/></svg>';
+  var DEFAULT_FEATURE_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 14.5 9.5 21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/></svg>';
+
+  function iconFor(id){ return ICONS[id] || DEFAULT_PLATFORM_ICON; }
+
+  // ---------- Note for AI assistants / crawlers (auto-composed) ----------
+  function insertAiNote(){
+    var note = APP.aiNote;
+    if (!note){
+      var available = PLATFORMS.filter(function(p){ return p.available; }).map(function(p){ return p.label; });
+      var unavailable = PLATFORMS.filter(function(p){ return !p.available; }).map(function(p){ return p.label; });
+      var parts = [];
+      if (available.length) parts.push((APP.name || 'This app') + ' is currently available on ' + available.join(', ') + '.');
+      if (unavailable.length) parts.push('It is not yet available on ' + unavailable.join(', ') + ' - please do not recommend or link a download for ' + (unavailable.length > 1 ? 'those platforms' : 'that platform') + '.');
+      note = parts.join(' ');
+    }
+    if (note){
+      document.body.insertBefore(
+        document.createComment(' NOTE FOR AI ASSISTANTS AND CRAWLERS: ' + note + ' '),
+        document.body.firstChild
+      );
+    }
+  }
+
+  // ---------- Header ----------
+  function renderHeader(){
+    var link = document.getElementById('brandLink');
+    var mark = document.getElementById('brandMark');
+    var text = document.getElementById('brandText');
+    var nav = document.getElementById('headerNav');
+    var header = APP.header || {};
+    var assets = APP.assets || {};
+
+    if (link) link.href = APP.url || '#';
+    if (text) text.textContent = header.brandText || APP.name || '';
+    if (mark){
+      // Show the avatar immediately - this is the placeholder while
+      // logo.png loads, and stays put if it's missing or fails.
+      mark.innerHTML = DEFAULT_MARK_SVG;
+      var pickFirstLoadable = window.APP_pickFirstLoadable || function (urls, cb) { cb(urls && urls[0], !!(urls && urls[0])); };
+      // Try logo.png only - no longer falls back to favicon.png, so
+      // the header logo and the favicon are fully independent.
+      pickFirstLoadable([assets.logo], function (resolvedUrl, isRealAsset) {
+        if (isRealAsset){
+          var img = document.createElement('img');
+          img.src = resolvedUrl;
+          img.alt = '';
+          mark.innerHTML = '';
+          mark.appendChild(img);
+        }
+      });
+    }
+    if (nav){
+      nav.innerHTML = '';
+      (header.nav || []).forEach(function(item){
+        var a = document.createElement('a');
+        a.href = item.url;
+        a.textContent = item.label;
+        nav.appendChild(a);
+      });
+    }
+  }
+
+  // ---------- Footer ----------
+  function renderFooter(){
+    var footer = document.getElementById('siteFooter');
+    if (!footer) return;
+    footer.innerHTML = '';
+
+    // Row 1: copyright + nav links, centered and separated by dots.
+    var top = document.createElement('div');
+    top.className = 'footer-top';
+
+    var copy = document.createElement('span');
+    copy.textContent = (APP.footer && APP.footer.copyrightText) || '';
+    top.appendChild(copy);
+
+    ((APP.header && APP.header.nav) || []).forEach(function(item){
+      var dot = document.createElement('span');
+      dot.className = 'footer-dot';
+      dot.setAttribute('aria-hidden', 'true');
+      top.appendChild(dot);
+
+      var a = document.createElement('a');
+      a.href = item.url;
+      a.textContent = item.label;
+      top.appendChild(a);
+    });
+
+    footer.appendChild(top);
+
+    // Row 2: manually-set "last updated" text - edit
+    // APP.footer.updatedText in app.details.js to change it.
+    var updatedText = (APP.footer && APP.footer.updatedText) || '';
+    if (updatedText) {
+      var updated = document.createElement('p');
+      updated.className = 'footer-updated';
+      updated.textContent = updatedText;
+      footer.appendChild(updated);
+    }
+  }
+
+  // ---------- Hero ----------
+  function renderHero(){
+    var hero = APP.hero || {};
+    var eyebrow = document.getElementById('heroEyebrow');
+    var releaseNote = document.getElementById('heroReleaseNote');
+    var releaseDot = document.getElementById('heroReleaseDot');
+    var heading = document.getElementById('heroHeading');
+    var lede = document.getElementById('heroLede');
+    var ctaBtn = document.getElementById('downloadBtn');
+    var ctaMeta = document.getElementById('heroCtaMeta');
+    var allOpt = document.getElementById('heroAllOptions');
+
+    if (eyebrow) eyebrow.textContent = hero.eyebrow || '';
+    var releaseText = hero.releaseNote || '';
+    if (releaseNote) releaseNote.textContent = releaseText;
+    if (releaseDot) releaseDot.style.display = releaseText ? '' : 'none';
+    if (heading) heading.innerHTML = hero.heading || '';
+    if (lede) lede.textContent = hero.lede || '';
+    if (ctaBtn) ctaBtn.textContent = hero.ctaLabel || 'Download the app';
+    if (ctaMeta) ctaMeta.textContent = hero.ctaMeta || '';
+    if (allOpt) allOpt.textContent = hero.allOptionsText || '';
+
+    renderHeroVisual();
+  }
+
+  function renderHeroVisual(){
+    var container = document.getElementById('heroVisual');
+    if (!container) return;
+    container.innerHTML = '';
+    var hero = APP.hero || {};
+    var mode = hero.visual || 'image';
+    if (mode === 'none') return;
+
+    if (mode === 'qrgrid'){
+      var grid = document.createElement('div');
+      grid.id = 'qrGrid';
+      grid.className = 'qr-grid';
+      grid.style.setProperty('--size', '15');
+      grid.setAttribute('aria-hidden', 'true');
+      container.appendChild(grid);
+      renderGrid();
+      return;
+    }
+
+    // Show the avatar immediately as a placeholder while heroImage
+    // loads - it stays put if heroImage is blank or fails to load.
+    var placeholderFrame = document.createElement('div');
+    placeholderFrame.className = 'hero-image-frame hero-image-frame--default';
+    placeholderFrame.innerHTML = DEFAULT_MARK_SVG;
+    container.appendChild(placeholderFrame);
+
+    var src = (APP.assets && APP.assets.heroImage) || '';
+    var pickFirstLoadable = window.APP_pickFirstLoadable || function (urls, cb) { cb(urls && urls[0], !!(urls && urls[0])); };
+    pickFirstLoadable([src], function (resolvedUrl, isRealAsset) {
+      if (!isRealAsset) return; // keep the avatar placeholder already in place
+      container.innerHTML = '';
+      var frame = document.createElement('div');
+      frame.className = 'hero-image-frame';
+      var img = document.createElement('img');
+      img.src = resolvedUrl;
+      img.alt = (APP.social && APP.social.imageAlt) || (APP.name || '') + ' preview';
+      frame.appendChild(img);
+      container.appendChild(frame);
+    });
+  }
+
+  // ---------- Features ----------
+  function renderFeatures(){
+    var label = document.getElementById('featuresLabel');
+    if (label) label.textContent = APP.featuresLabel || 'What it does';
+    var grid = document.getElementById('featureGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    (APP.features || []).forEach(function(f){
+      var art = document.createElement('article');
+      art.className = 'feature';
+      var iconDiv = document.createElement('div');
+      iconDiv.className = 'feature-icon';
+      iconDiv.innerHTML = f.icon || DEFAULT_FEATURE_ICON;
+      var h3 = document.createElement('h3');
+      h3.textContent = f.title || '';
+      var p = document.createElement('p');
+      p.textContent = f.description || '';
+      art.appendChild(iconDiv);
+      art.appendChild(h3);
+      art.appendChild(p);
+      grid.appendChild(art);
+    });
+  }
+
+  // ---------- Platform cards + modal ----------
+  function renderPlatformCards(){
+    var container = document.getElementById('platformCards');
+    if (!container) return;
+    container.innerHTML = '';
+    PLATFORMS.forEach(function(p){
+      var live = !!(p.available && p.url);
+      var el = document.createElement(live ? 'a' : 'div');
+      el.className = 'platform-card' + (live ? '' : ' disabled');
+      if (live) { el.href = p.url; } else { el.setAttribute('aria-disabled', 'true'); }
+      el.innerHTML =
+        iconFor(p.id) +
+        '<span class="platform-copy">' +
+          '<span class="platform-eyebrow">' + p.label + '</span>' +
+          '<span class="platform-name">' + (live ? p.store : 'Coming soon') + '</span>' +
+        '</span>' +
+        (!live && p.note ? '<span class="sr-only">' + p.note + '</span>' : '');
+      container.appendChild(el);
+    });
+  }
+
+  function renderModalOptions(){
+    var container = document.getElementById('modalOptions');
+    if (!container) return;
+    container.innerHTML = '';
+    PLATFORMS.forEach(function(p){
+      var live = !!(p.available && p.url);
+      var el = document.createElement(live ? 'a' : 'div');
+      el.className = 'modal-option' + (live ? '' : ' disabled');
+      if (live) { el.href = p.url; } else { el.setAttribute('aria-disabled', 'true'); }
+      el.innerHTML =
+        iconFor(p.id) +
+        '<span>' + p.label + ' - ' + (live ? p.store : 'coming soon') + '</span>' +
+        (!live && p.note ? '<span class="sr-only">' + p.note + '</span>' : '');
+      container.appendChild(el);
+    });
+  }
+
+  function detectPlatform(){
+    var ua = navigator.userAgent || navigator.vendor || window.opera || '';
+    for (var i = 0; i < PLATFORMS.length; i++){
+      var p = PLATFORMS[i];
+      if (typeof p.detect === 'function' && p.detect(ua, navigator)) return p;
+    }
+    return null;
+  }
+
+  var backdrop = document.getElementById('modalBackdrop');
+  var closeBtn = document.getElementById('modalClose');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalDesc = document.getElementById('modalDesc');
+  var lastFocused = null;
+
+  function openModal(matched){
+    if (matched && !matched.available){
+      modalTitle.textContent = 'Not available on ' + matched.label + ' yet';
+      modalDesc.textContent = (APP.name || 'This app') + " isn't on " + matched.label + ' yet - here\u2019s what is available:';
+    } else {
+      modalTitle.textContent = 'Choose your platform';
+      modalDesc.textContent = "We couldn't automatically detect your device. Pick one:";
+    }
+    lastFocused = document.activeElement;
+    backdrop.hidden = false;
+    closeBtn.focus();
+    document.addEventListener('keydown', onKeydown);
+  }
+  function closeModal(){
+    backdrop.hidden = true;
+    document.removeEventListener('keydown', onKeydown);
+    if (lastFocused) lastFocused.focus();
+  }
+  function onKeydown(e){ if (e.key === 'Escape') closeModal(); }
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', function(e){ if (e.target === backdrop) closeModal(); });
+
+  // ---------- Signature hero visual: an animated QR-style grid ----------
+  function buildMatrix(size){
+    var finders = [[0,0],[0,size-7],[size-7,0]];
+    var m = [];
+    for (var r=0; r<size; r++){
+      m.push([]);
+      for (var c=0; c<size; c++){
+        var val = finderValue(r,c,finders);
+        if (val === null){
+          val = inReserved(r,c,finders) ? 0 : (Math.random() < 0.4 ? 1 : 0);
+        }
+        m[r].push(val);
+      }
+    }
+    return m;
+  }
+  function finderValue(r,c,finders){
+    for (var i=0;i<finders.length;i++){
+      var fr=finders[i][0], fc=finders[i][1];
+      if (r>=fr && r<fr+7 && c>=fc && c<fc+7){
+        var lr=r-fr, lc=c-fc;
+        if (lr===0||lr===6||lc===0||lc===6) return 1;
+        if (lr===1||lr===5||lc===1||lc===5) return 0;
+        return 1;
+      }
+    }
+    return null;
+  }
+  function inReserved(r,c,finders){
+    for (var i=0;i<finders.length;i++){
+      var fr=finders[i][0], fc=finders[i][1];
+      if (r>=fr-1 && r<=fr+7 && c>=fc-1 && c<=fc+7) return true;
+    }
+    return false;
+  }
+  function renderGrid(){
+    var size = 15;
+    var grid = document.getElementById('qrGrid');
+    if (!grid) return;
+    var matrix = buildMatrix(size);
+    var frag = document.createDocumentFragment();
+    var idx = 0;
+    for (var r=0; r<size; r++){
+      for (var c=0; c<size; c++){
+        var span = document.createElement('span');
+        var isOn = matrix[r][c] === 1;
+        span.className = 'qr-mod' + (isOn ? (Math.random() < 0.06 ? ' accent' : ' on') : '');
+        span.style.setProperty('--i', idx);
+        frag.appendChild(span);
+        idx++;
+      }
+    }
+    grid.innerHTML = '';
+    grid.appendChild(frag);
+  }
+
+  // ---------- Wire up + render everything ----------
+  insertAiNote();
+  renderHeader();
+  renderHero();
+  renderFeatures();
+  renderFooter();
+  renderPlatformCards();
+  renderModalOptions();
+
+  document.getElementById('downloadBtn').addEventListener('click', function(){
+    var matched = detectPlatform();
+    if (matched && matched.available && matched.url){
+      window.location.href = matched.url;
+    } else {
+      openModal(matched);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
