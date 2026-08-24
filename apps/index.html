@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  All Apps tab of the ashiqur.in apps site. The grid below, and the
+  Device / Category filter dropdowns, are built entirely from
+  /apps/apps.data.js - add a new app there and it appears here (and
+  in Home's Featured Apps section, if flagged featured) automatically.
+  Icons are read from apps/assets/<id>.png per app - see apps.data.js.
+  Search/filter state is mirrored into the URL (?q=&device=&category=)
+  so a filtered view can be bookmarked or shared.
+
+  OPTIONAL BRANDING UPLOADS - see index.html's head comment for the
+  full list (/assets/favicon.png, /assets/logo.png,
+  /assets/preview-image.png). This page's meta tags below point at
+  the same site-wide preview-image.png as Home.
+-->
+
+<title>All Apps - ashiqur</title>
+<meta name="description" content="Browse every app by Ashiqur Rahman in one place - search by name or filter by device and category.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ashiqur Rahman">
+<link rel="canonical" href="https://apps.ashiqur.in/apps/">
+<link rel="icon" href="../assets/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://apps.ashiqur.in/apps/">
+<meta property="og:site_name" content="ashiqur">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="All Apps - ashiqur">
+<meta property="og:description" content="Browse every app by Ashiqur Rahman in one place - search by name or filter by device and category.">
+<meta property="og:image" content="https://apps.ashiqur.in/assets/preview-image.png">
+<meta property="og:image:secure_url" content="https://apps.ashiqur.in/assets/preview-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ashiqur - all apps">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="All Apps - ashiqur">
+<meta name="twitter:description" content="Browse every app by Ashiqur Rahman in one place - search by name or filter by device and category.">
+<meta name="twitter:image" content="https://apps.ashiqur.in/assets/preview-image.png">
+<meta name="twitter:image:alt" content="ashiqur - all apps">
+
+<meta name="theme-color" content="#F4F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161A" media="(prefers-color-scheme: dark)">
+
+<!-- Baseline JSON-LD; enhanced with a full ItemList by script.js once
+     apps.data.js loads (same dynamic-update pattern as the per-app
+     template - Google/Bing render JS fine, so this is safe). -->
+<script type="application/ld+json" id="ldJson">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "All Apps - ashiqur",
+  "url": "https://apps.ashiqur.in/apps/",
+  "description": "Browse every app by Ashiqur Rahman in one place."
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" id="brandLink" href="#">
+      <span class="brand-mark" id="brandMark" aria-hidden="true"></span>
+      <span class="brand-text" id="brandText"></span>
+    </a>
+    <nav class="header-nav" id="headerNav"></nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-intro wrap">
+    <h1>All apps</h1>
+    <p>Every app in one place. Search by name, or filter by device and category.</p>
+  </section>
+
+  <section class="section wrap" aria-label="App directory">
+    <form class="apps-toolbar" id="appsToolbar" role="search" autocomplete="off" onsubmit="return false;">
+      <label class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="sr-only">Search apps</span>
+        <input type="search" id="searchInput" name="q" placeholder="Search apps…">
+      </label>
+      <select class="filter-select" id="deviceFilter" name="device" aria-label="Filter by device">
+        <option value="">All devices</option>
+      </select>
+      <select class="filter-select" id="categoryFilter" name="category" aria-label="Filter by category">
+        <option value="">All categories</option>
+      </select>
+    </form>
+
+    <p class="results-meta" id="resultsMeta" aria-live="polite"></p>
+    <div class="app-grid" id="appsGrid"></div>
+    <div class="empty-state" id="emptyState" hidden>
+      <p>No apps match your search or filters.</p>
+      <button class="btn-secondary" type="button" id="clearFiltersBtn">Clear filters</button>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer wrap" id="siteFooter"></footer>
+
+<script src="../script.js"></script>
+<script src="apps.data.js"></script>
+<script>
+(function () {
+  SITE_renderHeader(SITE_CONFIG.appsUrl);
+  SITE_renderFooter();
+
+  var ALL_APPS = window.SITE_APPS || [];
+
+  var searchInput = document.getElementById('searchInput');
+  var deviceFilter = document.getElementById('deviceFilter');
+  var categoryFilter = document.getElementById('categoryFilter');
+  var grid = document.getElementById('appsGrid');
+  var resultsMeta = document.getElementById('resultsMeta');
+  var emptyState = document.getElementById('emptyState');
+  var clearFiltersBtn = document.getElementById('clearFiltersBtn');
+
+  // ---------- Build filter options from whatever's actually in apps.data.js ----------
+  function uniqueSorted(values) {
+    var seen = {}, out = [];
+    values.forEach(function (v) {
+      if (v && !seen[v]) { seen[v] = true; out.push(v); }
+    });
+    return out.sort(function (a, b) { return a.localeCompare(b); });
+  }
+
+  var allPlatformIds = uniqueSorted(ALL_APPS.reduce(function (acc, a) { return acc.concat(a.platforms || []); }, []));
+  allPlatformIds.forEach(function (pid) {
+    var opt = document.createElement('option');
+    opt.value = pid;
+    opt.textContent = window.SITE_platformLabel ? window.SITE_platformLabel(pid) : pid;
+    deviceFilter.appendChild(opt);
+  });
+
+  var allCategories = uniqueSorted(ALL_APPS.map(function (a) { return a.category; }));
+  allCategories.forEach(function (cat) {
+    var opt = document.createElement('option');
+    opt.value = cat;
+    opt.textContent = cat;
+    categoryFilter.appendChild(opt);
+  });
+
+  // ---------- Read initial state from the URL (?q=&device=&category=) ----------
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('q')) searchInput.value = params.get('q');
+  if (params.get('device') && allPlatformIds.indexOf(params.get('device')) !== -1) deviceFilter.value = params.get('device');
+  if (params.get('category') && allCategories.indexOf(params.get('category')) !== -1) categoryFilter.value = params.get('category');
+
+  function syncUrl() {
+    var p = new URLSearchParams();
+    if (searchInput.value.trim()) p.set('q', searchInput.value.trim());
+    if (deviceFilter.value) p.set('device', deviceFilter.value);
+    if (categoryFilter.value) p.set('category', categoryFilter.value);
+    var qs = p.toString();
+    var newUrl = window.location.pathname + (qs ? '?' + qs : '');
+    window.history.replaceState(null, '', newUrl);
+  }
+
+  function matchesQuery(app, q) {
+    if (!q) return true;
+    var haystack = [app.name, app.tagline, app.description, app.category].join(' ').toLowerCase();
+    return haystack.indexOf(q.toLowerCase()) !== -1;
+  }
+
+  function buildCard(app) {
+    var isSoon = app.status === 'soon';
+    var card = document.createElement(isSoon ? 'div' : 'a');
+    card.className = 'app-card' + (isSoon ? ' is-disabled' : '');
+    if (!isSoon) card.href = app.url;
+
+    var top = document.createElement('div');
+    top.className = 'app-card-top';
+
+    var iconWrap = document.createElement('div');
+    iconWrap.className = 'app-icon';
+    top.appendChild(iconWrap);
+
+    var titleWrap = document.createElement('div');
+    titleWrap.className = 'app-card-title';
+    var name = document.createElement('h3');
+    name.className = 'app-name';
+    name.textContent = app.name || '';
+    var tagline = document.createElement('p');
+    tagline.className = 'app-tagline';
+    tagline.textContent = app.tagline || '';
+    titleWrap.appendChild(name);
+    titleWrap.appendChild(tagline);
+    top.appendChild(titleWrap);
+
+    card.appendChild(top);
+
+    var meta = document.createElement('div');
+    meta.className = 'app-card-meta';
+    if (app.category) {
+      var tag = document.createElement('span');
+      tag.className = 'app-tag';
+      tag.textContent = app.category;
+      meta.appendChild(tag);
+    }
+    if (isSoon) {
+      var badge = document.createElement('span');
+      badge.className = 'app-badge-soon';
+      badge.textContent = 'Coming soon';
+      meta.appendChild(badge);
+    }
+    var platIcons = document.createElement('span');
+    platIcons.className = 'app-platform-icons';
+    (app.platforms || []).forEach(function (pid) {
+      var span = document.createElement('span');
+      var label = window.SITE_platformLabel ? window.SITE_platformLabel(pid) : pid;
+      span.setAttribute('aria-label', label);
+      span.title = label;
+      span.innerHTML = window.SITE_platformIcon ? window.SITE_platformIcon(pid) : '';
+      platIcons.appendChild(span);
+    });
+    meta.appendChild(platIcons);
+    card.appendChild(meta);
+
+    window.SITE_renderAppIcon(iconWrap, app);
+    return card;
+  }
+
+  function render() {
+    var q = searchInput.value.trim();
+    var device = deviceFilter.value;
+    var category = categoryFilter.value;
+
+    var filtered = ALL_APPS.filter(function (app) {
+      if (!matchesQuery(app, q)) return false;
+      if (device && (app.platforms || []).indexOf(device) === -1) return false;
+      if (category && app.category !== category) return false;
+      return true;
+    });
+
+    grid.innerHTML = '';
+    filtered.forEach(function (app) { grid.appendChild(buildCard(app)); });
+
+    var total = ALL_APPS.length;
+    resultsMeta.textContent = total === 0 ? '' :
+      (filtered.length === total ? (total + (total === 1 ? ' app' : ' apps')) : ('Showing ' + filtered.length + ' of ' + total + ' apps'));
+
+    var isEmpty = filtered.length === 0;
+    emptyState.hidden = !isEmpty;
+    grid.hidden = isEmpty;
+
+    syncUrl();
+    updateJsonLd(filtered);
+  }
+
+  function updateJsonLd(filtered) {
+    var ldScript = document.getElementById('ldJson');
+    if (!ldScript) return;
+    var ld = {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'All Apps - ashiqur',
+      url: 'https://apps.ashiqur.in/apps/',
+      description: 'Browse every app by Ashiqur Rahman in one place.',
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: ALL_APPS.map(function (app, i) {
+          return {
+            '@type': 'ListItem',
+            position: i + 1,
+            url: app.url,
+            name: app.name
+          };
+        })
+      }
+    };
+    ldScript.textContent = JSON.stringify(ld, null, 2);
+  }
+
+  searchInput.addEventListener('input', render);
+  deviceFilter.addEventListener('change', render);
+  categoryFilter.addEventListener('change', render);
+  clearFiltersBtn.addEventListener('click', function () {
+    searchInput.value = '';
+    deviceFilter.value = '';
+    categoryFilter.value = '';
+    render();
+    searchInput.focus();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

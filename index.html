@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  Home tab of the ashiqur.in apps site. Design system (colors, type,
+  header/footer/hero patterns) matches the per-app landing page
+  template 1:1 so moving from here into an app's own page - or from
+  the All Apps tab - never feels like a different site.
+  Site-wide brand/nav/footer config: /script.js (SITE_CONFIG).
+  App list (used below for "Featured apps"): /apps/apps.data.js.
+  Big video spotlight config: /featured.app.details.js - picks one
+  app from apps.data.js (by id) and shows it in detail with a demo
+  video. Media for it lives in /assets/featured-app/ - see the
+  README.txt there. No config, no matching app id, or a missing
+  video file all degrade gracefully (section just hides, or the
+  video falls back to a poster/icon) - never a broken page.
+
+  OPTIONAL BRANDING UPLOADS - the site works fine without these (a
+  generated pixel-mark avatar is the fallback everywhere), but for
+  full branding upload:
+    /assets/favicon.png        - browser tab icon (site-wide)
+    /assets/logo.png           - header brand mark (site-wide)
+    /assets/preview-image.png  - 1200x630 social share image (site-wide)
+  These are baked directly into the <meta> tags below (unlike the
+  per-app template, this page's meta isn't JS-templated) - so if you
+  rename or move any of them, update the matching og:/twitter: tags
+  and the icon link below to match.
+-->
+
+<title>ashiqur - Small, Focused Apps</title>
+<meta name="description" content="Small, focused Android apps by Ashiqur Rahman - no clutter, no unnecessary permissions. Browse the full app catalog with search and filters.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ashiqur Rahman">
+<link rel="canonical" href="https://apps.ashiqur.in/">
+<link rel="icon" href="assets/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://apps.ashiqur.in/">
+<meta property="og:site_name" content="ashiqur">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="ashiqur - Small, Focused Apps">
+<meta property="og:description" content="Small, focused Android apps by Ashiqur Rahman - no clutter, no unnecessary permissions. Browse the full app catalog with search and filters.">
+<meta property="og:image" content="https://apps.ashiqur.in/assets/preview-image.png">
+<meta property="og:image:secure_url" content="https://apps.ashiqur.in/assets/preview-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ashiqur - apps preview">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ashiqur - Small, Focused Apps">
+<meta name="twitter:description" content="Small, focused Android apps by Ashiqur Rahman - no clutter, no unnecessary permissions.">
+<meta name="twitter:image" content="https://apps.ashiqur.in/assets/preview-image.png">
+<meta name="twitter:image:alt" content="ashiqur - apps preview">
+
+<meta name="theme-color" content="#F4F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161A" media="(prefers-color-scheme: dark)">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ashiqur",
+  "url": "https://apps.ashiqur.in/",
+  "description": "Small, focused Android apps by Ashiqur Rahman.",
+  "publisher": { "@type": "Person", "name": "Ashiqur Rahman", "alternateName": "ashiqur" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://apps.ashiqur.in/apps/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" id="brandLink" href="#">
+      <span class="brand-mark" id="brandMark" aria-hidden="true"></span>
+      <span class="brand-text" id="brandText"></span>
+    </a>
+    <nav class="header-nav" id="headerNav"></nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow-row">
+        <span class="eyebrow-text">ashiqur · apps</span>
+      </p>
+      <h1>Small, focused apps<br>that just work.</h1>
+      <p class="lede">I design and build small apps that do one thing well - no clutter, no accounts to sign up for, no permissions the app doesn't actually need.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://apps.ashiqur.in/apps/">Browse all apps</a>
+        <span class="cta-meta" id="appCountMeta"></span>
+      </div>
+    </div>
+    <div class="hero-visual" id="heroVisual"></div>
+  </section>
+
+  <section class="section wrap featured-app-section" id="featuredAppSection" aria-label="Featured app" hidden>
+    <div id="featuredAppSpotlight"></div>
+  </section>
+
+  <section class="section wrap" aria-label="Why these apps">
+    <h2 class="section-label">Why these apps</h2>
+    <div class="feature-grid">
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
+        <h3>Actually free</h3>
+        <p>No paywalls hiding basic features, no forced subscriptions.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>No account needed</h3>
+        <p>Open the app and use it - nothing to sign up for, nothing to log into.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h3>Kept up to date</h3>
+        <p>Actively maintained, with fixes and improvements shipped over time.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 6.5V12c0 5 3.4 8.5 8 9 4.6-.5 8-4 8-9V6.5L12 3Z"/></svg></div>
+        <h3>Upfront about permissions</h3>
+        <p>Each app only asks for what it needs to function - explained on its own page.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section wrap" id="moreAppsSection" aria-label="More apps">
+    <div class="section-heading-row">
+      <h2 class="section-label">More apps</h2>
+      <a class="section-link" href="https://apps.ashiqur.in/apps/">See all apps →</a>
+    </div>
+    <div class="app-grid" id="featuredGrid"></div>
+  </section>
+</main>
+
+<footer class="site-footer wrap" id="siteFooter"></footer>
+
+<script src="script.js"></script>
+<script src="apps/apps.data.js"></script>
+<script src="featured.app.details.js"></script>
+<script>
+(function () {
+  SITE_renderHeader(SITE_CONFIG.homeUrl);
+  SITE_renderFooter();
+
+  // ---------- Hero visual: the site's own brand mark, framed ----------
+  var heroVisual = document.getElementById('heroVisual');
+  if (heroVisual) {
+    var frame = document.createElement('div');
+    frame.className = 'mark-grid';
+    
+    // 1. Immediately inject the SVG so it shows during loading / as a fallback
+    frame.innerHTML = window.SITE_DEFAULT_MARK_SVG;
+    heroVisual.appendChild(frame);
+
+    // 2. Try loading the real image in the background
+    window.SITE_pickFirstLoadable(['assets/icon.jpg'], function (resolvedUrl, isRealAsset) {
+      if (isRealAsset) {
+        // 3. If it successfully finds and loads icon.png, replace the SVG
+        var img = document.createElement('img');
+        img.src = resolvedUrl;
+        img.alt = 'Hero image';
+        
+        frame.innerHTML = ''; // Clears out the SVG
+        frame.appendChild(img);
+      }
+    });
+  }
+
+  var apps = window.SITE_APPS || [];
+
+  // ---------- App count in the hero CTA meta ----------
+  var countMeta = document.getElementById('appCountMeta');
+  if (countMeta) {
+    var liveCount = apps.filter(function (a) { return a.status !== 'soon'; }).length;
+    countMeta.textContent = liveCount === 1 ? '1 app so far' : (liveCount + ' apps so far');
+  }
+
+  // ---------- Featured app spotlight (video + detail section) ----------
+  SITE_renderFeaturedApp(document.getElementById('featuredAppSpotlight'), apps);
+  var spotlightAppId = window.FEATURED_APP && window.FEATURED_APP.appId;
+
+  // ---------- More apps grid (everything except the spotlighted app above) ----------
+  var grid = document.getElementById('featuredGrid');
+  var moreAppsSection = document.getElementById('moreAppsSection');
+  if (grid) {
+    var featured = apps.filter(function (a) { return a.featured && a.id !== spotlightAppId; });
+    if (!featured.length) featured = apps.filter(function (a) { return a.id !== spotlightAppId; }); // fall back to everything else if nothing is flagged featured
+    featured = featured.slice(0, 6);
+
+    if (!featured.length && !apps.length) {
+      // Truly no apps published anywhere yet - show the instructional
+      // empty state.
+      var empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.innerHTML = '<p>No apps published yet - check back soon.</p>';
+      grid.appendChild(empty);
+    } else if (!featured.length) {
+      // Apps exist, but the spotlight above already covers all of
+      // them - hide this section instead of showing an empty heading
+      // with nothing under it.
+      if (moreAppsSection) moreAppsSection.hidden = true;
+    }
+
+    featured.forEach(function (app) {
+      var isSoon = app.status === 'soon';
+      var card = document.createElement(isSoon ? 'div' : 'a');
+      card.className = 'app-card' + (isSoon ? ' is-disabled' : '');
+      if (!isSoon) card.href = app.url;
+
+      var top = document.createElement('div');
+      top.className = 'app-card-top';
+
+      var iconWrap = document.createElement('div');
+      iconWrap.className = 'app-icon';
+      top.appendChild(iconWrap);
+
+      var titleWrap = document.createElement('div');
+      titleWrap.className = 'app-card-title';
+      var name = document.createElement('h3');
+      name.className = 'app-name';
+      name.textContent = app.name || '';
+      var tagline = document.createElement('p');
+      tagline.className = 'app-tagline';
+      tagline.textContent = app.tagline || '';
+      titleWrap.appendChild(name);
+      titleWrap.appendChild(tagline);
+      top.appendChild(titleWrap);
+
+      card.appendChild(top);
+
+      var meta = document.createElement('div');
+      meta.className = 'app-card-meta';
+      if (app.category) {
+        var tag = document.createElement('span');
+        tag.className = 'app-tag';
+        tag.textContent = app.category;
+        meta.appendChild(tag);
+      }
+      if (isSoon) {
+        var badge = document.createElement('span');
+        badge.className = 'app-badge-soon';
+        badge.textContent = 'Coming soon';
+        meta.appendChild(badge);
+      }
+      var platIcons = document.createElement('span');
+      platIcons.className = 'app-platform-icons';
+      (app.platforms || []).forEach(function (pid) {
+        var span = document.createElement('span');
+        span.setAttribute('aria-label', window.SITE_platformLabel ? window.SITE_platformLabel(pid) : pid);
+        span.title = window.SITE_platformLabel ? window.SITE_platformLabel(pid) : pid;
+        span.innerHTML = window.SITE_platformIcon ? window.SITE_platformIcon(pid) : '';
+        platIcons.appendChild(span);
+      });
+      meta.appendChild(platIcons);
+      card.appendChild(meta);
+
+      grid.appendChild(card);
+      window.SITE_renderAppIcon(iconWrap, app);
+    });
+  }
+})();
+</script>
+</body>
+</html>
