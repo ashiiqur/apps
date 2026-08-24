@@ -26,11 +26,14 @@
   URL rather than this file's real location. A fully-qualified URL
   always resolves correctly, no matter what URL triggered the 404.
 
-  Header brand mark: the embedded pixel-mark SVG is used directly,
-  with no external logo.png request and no swap script - so, same
+  Header brand mark: this page loads the real
+  https://apps.ashiqur.in/assets/logo.png (same absolute path
+  SITE_CONFIG.assets.logo points at) directly via an <img>, layered
+  over the embedded pixel-mark SVG. No JS is needed for the
+  fallback - the <img>'s own onerror removes it if logo.png is
+  missing or unreachable, revealing the SVG underneath - so, same
   as everything else on this page, there's no scenario where
-  branding is just broken (nothing to fail to load in the first
-  place).
+  branding is just broken.
 
   Design values (colors, spacing, type) are copied from the shared
   /style.css so this still looks identical to the rest of the site -
@@ -89,8 +92,9 @@ h1{ font-family:'Space Mono', monospace; font-weight:700; margin:0; letter-spaci
 .site-header{ border-bottom:1px solid var(--line); }
 .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:20px 24px; }
 .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-.brand-mark{ width:32px; height:32px; flex-shrink:0; color:var(--ink); }
+.brand-mark{ width:32px; height:32px; flex-shrink:0; color:var(--ink); position:relative; }
 .brand-mark svg{ display:block; width:100%; height:100%; }
+.brand-mark img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; }
 .brand-text{ font-family:'Space Mono', monospace; text-transform:uppercase; letter-spacing:0.08em; font-size:13px; font-weight:700; }
 .header-nav{ display:flex; gap:22px; }
 .header-nav a{
@@ -443,7 +447,9 @@ h1{ font-family:'Space Mono', monospace; font-weight:700; margin:0; letter-spaci
 <rect x="14" y="31" width="1" height="1" fill-opacity="0.14"/>
 <rect x="15" y="31" width="1" height="1" fill-opacity="0.03"/>
 </g>
-</svg>      </span>
+</svg>
+<img src="https://apps.ashiqur.in/assets/logo.png" alt="ashiqur" onerror="this.remove()">
+      </span>
       <span class="brand-text">ashiqur</span>
     </a>
     <nav class="header-nav">
