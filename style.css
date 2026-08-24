@@ -20,6 +20,10 @@
   --wrap: 1080px;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 @media (prefers-color-scheme: dark){
   :root{
     --paper: #14161A;
