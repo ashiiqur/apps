@@ -26,13 +26,11 @@
   URL rather than this file's real location. A fully-qualified URL
   always resolves correctly, no matter what URL triggered the 404.
 
-  Header brand mark: this page tries to load the real
-  https://apps.ashiqur.in/assets/logo.png (same absolute path
-  SITE_CONFIG.assets.logo points at) and swaps it in if it loads.
-  The embedded pixel-mark SVG stays in place underneath as the
-  guaranteed fallback if logo.png is missing, unreachable, or the
-  swap script fails for any reason - so, same as everything else on
-  this page, there's no scenario where branding is just broken.
+  Header brand mark: the embedded pixel-mark SVG is used directly,
+  with no external logo.png request and no swap script - so, same
+  as everything else on this page, there's no scenario where
+  branding is just broken (nothing to fail to load in the first
+  place).
 
   Design values (colors, spacing, type) are copied from the shared
   /style.css so this still looks identical to the rest of the site -
@@ -131,8 +129,7 @@ h1{ font-family:'Space Mono', monospace; font-weight:700; margin:0; letter-spaci
 .hero-visual{ display:flex; justify-content:center; }
 .mark-grid{
   width:min(300px, 70vw); aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
-  background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
-  box-shadow:0 30px 60px -30px rgba(20,22,26,0.25);
+  background:transparent;
 }
 .mark-grid svg{ display:block; width:100%; height:100%; object-fit:cover; }
 
@@ -158,7 +155,7 @@ h1{ font-family:'Space Mono', monospace; font-weight:700; margin:0; letter-spaci
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="https://apps.ashiqur.in/">
-      <span class="brand-mark" id="brandMark" aria-hidden="true">
+      <span class="brand-mark" aria-hidden="true">
 <svg class="app-default-mark" viewBox="2 2 28 28" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="Pixel portrait of Ashiqur Rahman">
 <style>
   .app-default-mark { --auto-fill: #2d4159; }
@@ -773,33 +770,6 @@ h1{ font-family:'Space Mono', monospace; font-weight:700; margin:0; letter-spaci
   </div>
   <p class="footer-updated">Last updated: August 2026</p>
 </footer>
-
-<script>
-// Optional real-logo swap for the header brand mark. Self-contained -
-// no dependency on script.js or any other site file, so it can never
-// be the thing that breaks this page. If assets/logo.png hasn't been
-// uploaded yet, is unreachable, or this script fails for any reason,
-// the embedded pixel-mark SVG (already in the markup above) just
-// stays exactly as it is.
-(function () {
-  try {
-    var mark = document.getElementById('brandMark');
-    if (!mark) return;
-    var probe = new Image();
-    probe.onload = function () {
-      var img = document.createElement('img');
-      img.src = 'https://apps.ashiqur.in/assets/logo.png';
-      img.alt = 'ashiqur';
-      mark.innerHTML = '';
-      mark.appendChild(img);
-    };
-    // onerror: do nothing - the inline SVG fallback is already showing.
-    probe.src = 'https://apps.ashiqur.in/assets/logo.png';
-  } catch (e) {
-    // Swallow any error - never let this script take the fallback SVG down with it.
-  }
-})();
-</script>
 
 </body>
 </html>
