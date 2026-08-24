@@ -36,7 +36,7 @@ window.SITE_CONFIG = {
   // nothing else needs to change.
   assets: {
     favicon: '/assets/favicon.png',
-    logo: 'assets/logo.png'
+    logo: '/assets/logo.png'
   },
 
   // Rendered in the header of BOTH pages, in this order. `url` is
