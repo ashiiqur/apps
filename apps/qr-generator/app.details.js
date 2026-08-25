@@ -141,7 +141,8 @@ window.APP_DETAILS = {
     brandText: 'QR Generator',
     // Shown in the header nav AND repeated in the footer.
     nav: [
-      { label: 'Privacy Policy', url: 'https://apps.ashiqur.in/apps/qr-generator/privacy-policy/' }
+      { label: 'Privacy Policy', url: 'https://apps.ashiqur.in/apps/qr-generator/privacy-policy/' },
+      { label: 'All Apps', url: 'https://apps.ashiqur.in/apps/' }
     ]
   },
 
