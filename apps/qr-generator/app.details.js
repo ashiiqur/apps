@@ -13,7 +13,7 @@
  *   - "What it does" feature grid
  *   - Footer text
  *
- * -------------------------------------------------------------------
+ * --------------------------------------------------------------
  * REUSE THIS TEMPLATE FOR A NEW APP
  * -------------------------------------------------------------------
  * 1. Duplicate this whole folder (index.html, app.details.js,
