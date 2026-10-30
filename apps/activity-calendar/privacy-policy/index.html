@@ -1,143 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy – Activity Calendar</title>
-<meta name="description" content="Privacy policy for the Activity Calendar Android app.">
+<title>Privacy Policy - Activity Calendar | ashiqur</title>
+<meta name="description" content="Privacy Policy for Activity Calendar, a free work timer, calendar, tasks and notes app that keeps your data on your device and syncs only with your own Google Drive if you turn sync on.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ashiqur Rahman">
+<link rel="canonical" href="https://apps.ashiqur.in/apps/activity-calendar/privacy-policy/">
+<link rel="icon" href="../favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://apps.ashiqur.in/apps/activity-calendar/privacy-policy/">
+<meta property="og:site_name" content="ashiqur">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Privacy Policy - Activity Calendar">
+<meta property="og:description" content="How Activity Calendar handles data: stored on your device, optional sync to your own Google Drive, no ads, no tracking, no developer servers.">
+<meta property="og:image" content="https://apps.ashiqur.in/apps/activity-calendar/preview-image.png">
+<meta property="og:image:secure_url" content="https://apps.ashiqur.in/apps/activity-calendar/preview-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Activity Calendar app preview">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy - Activity Calendar">
+<meta name="twitter:description" content="How Activity Calendar handles data: stored on your device, optional sync to your own Google Drive, no ads, no tracking, no developer servers.">
+<meta name="twitter:image" content="https://apps.ashiqur.in/apps/activity-calendar/preview-image.png">
+<meta name="twitter:image:alt" content="Activity Calendar app preview">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<meta name="theme-color" content="#F4F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161A" media="(prefers-color-scheme: dark)">
+
 <style>
-  :root {
-    --bg: #ffffff;
-    --text: #1f2328;
-    --muted: #59636e;
-    --line: #d8dee4;
-    --green: #30a14e;
-    --green-soft: #eaf6ed;
-    --link: #1a7f37;
-    color-scheme: light dark;
+  :root{
+    --paper: #F4F5F0;
+    --paper-raised: #FFFFFF;
+    --ink: #14161A;
+    --ink-soft: #55585F;
+    --accent: #2F6FED;
+    --accent-2: #00C896;
+    --line: #DBDDD6;
+    --radius: 14px;
+    --wrap: 1080px;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0f1411;
-      --text: #e6edf3;
-      --muted: #9aa5b1;
-      --line: #2a332d;
-      --green: #40c463;
-      --green-soft: #15251a;
-      --link: #56d364;
+
+  * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper: #14161A;
+      --paper-raised: #1B1E24;
+      --ink: #F4F5F0;
+      --ink-soft: #A6A9B1;
+      --line: #2B2E36;
     }
   }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font: 1.0625rem/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
   }
-  main { max-width: 40rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
-  header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
-  .mark { flex: none; width: 3.25rem; height: 3.25rem; border-radius: 0.8rem; background: var(--green); }
-  h1 { margin: 0; font-size: 1.75rem; line-height: 1.2; font-weight: 650; }
-  .date { margin: 0.25rem 0 2rem; color: var(--muted); font-size: 0.95rem; }
-  h2 { margin: 2.25rem 0 0.5rem; font-size: 1.25rem; line-height: 1.3; font-weight: 650; }
-  p, ul { margin: 0.6rem 0; }
-  ul { padding-left: 1.25rem; }
-  li { margin: 0.3rem 0; }
-  a { color: var(--link); text-underline-offset: 0.15em; }
-  a:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; border-radius: 2px; }
-  .summary {
-    background: var(--green-soft);
-    border-left: 4px solid var(--green);
-    padding: 0.9rem 1.1rem;
-    border-radius: 0 0.5rem 0.5rem 0;
+
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 24px; }
+  a{ color:inherit; }
+  :focus-visible{ outline:2.5px solid var(--accent); outline-offset:3px; border-radius:4px; }
+
+  h1,h2,h3{ font-family:'Space Mono', monospace; font-weight:700; margin:0; letter-spacing:-0.01em; }
+  .eyebrow-text, .eyebrow-note, .brand-text{
+    font-family:'Space Mono', monospace; text-transform:uppercase; letter-spacing:0.08em;
   }
-  .summary p { margin: 0.35rem 0; }
-  footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.95rem; }
+
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* ---------- Header ---------- */
+  .site-header{ border-bottom:1px solid var(--line); }
+  .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:20px 24px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand-mark{ width:32px; height:32px; flex-shrink:0; color:var(--ink); }
+  .brand-mark svg{ display:block; width:100%; height:100%; }
+  .brand-mark img{ display:block; width:100%; height:100%; object-fit:contain; }
+  .brand-text{ font-size:13px; font-weight:700; }
+  .header-nav{ display:flex; gap:18px; }
+  .header-nav a{
+    font-size:14px; text-decoration:none; color:var(--ink-soft);
+    border-bottom:1px solid transparent; padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .header-nav a:hover{ color:var(--ink); border-color:var(--ink); }
+
+  /* ---------- Legal content ---------- */
+  .legal{ padding:64px 24px 88px; }
+  .eyebrow-row{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
+  .eyebrow-text{ font-size:12px; color:var(--accent); }
+  .eyebrow-dot{ width:4px; height:4px; border-radius:50%; background:var(--ink-soft); flex-shrink:0; }
+  .eyebrow-note{ font-size:12px; color:var(--ink-soft); }
+  .legal h1{ font-size:clamp(30px, 5vw, 44px); line-height:1.05; margin-bottom:36px; }
+
+  .legal h3{
+    font-size:16px; letter-spacing:0; margin-top:44px; margin-bottom:14px;
+    padding-top:28px; border-top:1px solid var(--line);
+  }
+  .legal h3:first-of-type{ margin-top:0; padding-top:0; border-top:none; }
+
+  .legal p{ margin:0 0 16px; color:var(--ink-soft); font-size:15.5px; line-height:1.65; }
+  .legal ul{ margin:0 0 16px; padding-left:20px; color:var(--ink-soft); font-size:15.5px; line-height:1.65; }
+  .legal li{ margin-bottom:10px; }
+  .legal a{ color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+  .legal a:hover{ color:var(--ink); }
+  .highlight{ font-weight:600; color:var(--ink); }
+  .legal code{ font-family:'Space Mono', monospace; font-size:13.5px; background:var(--paper-raised); border:1px solid var(--line); border-radius:6px; padding:1px 6px; color:var(--ink); }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px;
+    padding:26px 24px 40px; font-size:12.5px; color:var(--ink-soft);
+  }
+  .footer-top{ display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px; }
+  .footer-top a{ text-decoration:underline; text-underline-offset:3px; color:var(--ink-soft); }
+  .footer-top a:hover{ color:var(--ink); }
+  .footer-dot{ width:5px; height:5px; border-radius:50%; background:var(--ink-soft); flex-shrink:0; }
+  .footer-updated{ margin:0; font-size:11px; color:var(--ink-soft); opacity:.7; }
 </style>
 </head>
 <body>
-<main>
 
-  <header>
-    <svg class="mark" viewBox="0 0 3264 3264" role="img" aria-label="Activity Calendar logo">
-      <g transform="translate(1632 1632) scale(0.8) translate(-1632 -1632)" fill="#fff">
-        <rect x="454" y="1137" width="679" height="1626" rx="339.5"/>
-        <rect x="1293" y="503" width="679" height="2260" rx="339.5"/>
-        <rect x="2131" y="751" width="679" height="2014" rx="339.5"/>
-      </g>
-    </svg>
-    <h1>Activity Calendar<br>Privacy Policy</h1>
-  </header>
-  <p class="date">Last updated: October 29, 2026</p>
-
-  <div class="summary">
-    <p><strong>In short:</strong> your data stays on your phone. If you choose to turn on Google Drive sync, a copy is saved in a private folder in your own Google Drive.</p>
-    <p>I don’t run any servers, I can’t see your data, and the app has no ads and no tracking.</p>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="https://apps.ashiqur.in/apps/activity-calendar/">
+      <span class="brand-mark" id="brandMark" aria-hidden="true"><svg class="app-default-mark" viewBox="2 2 28 28" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="Pixel portrait of Ashiqur Rahman">
+<style>
+  .app-default-mark { --auto-fill: #2d4159; }
+  @media (prefers-color-scheme: dark) {
+    .app-default-mark { --auto-fill: #e8ecf2; }
+  }
+</style>
+<g fill="var(--accent, var(--auto-fill))" transform="translate(16,15) scale(0.85) translate(-16,-16.5)">
+<rect x="14" y="0" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="1" width="1" height="1" fill-opacity="0.01"/>
+<rect x="16" y="1" width="2" height="1" fill-opacity="0.01"/>
+<rect x="11" y="2" width="1" height="1" fill-opacity="0.01"/>
+<rect x="13" y="2" width="1" height="1" fill-opacity="0.04"/>
+<rect x="14" y="2" width="1" height="1" fill-opacity="0.13"/>
+<rect x="15" y="2" width="1" height="1" fill-opacity="0.08"/>
+<rect x="10" y="3" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="3" width="1" height="1" fill-opacity="0.17"/>
+<rect x="13" y="3" width="1" height="1" fill-opacity="0.85"/>
+<rect x="14" y="3" width="1" height="1" fill-opacity="0.98"/>
+<rect x="15" y="3" width="1" height="1" fill-opacity="0.93"/>
+<rect x="16" y="3" width="1" height="1" fill-opacity="0.72"/>
+<rect x="17" y="3" width="1" height="1" fill-opacity="0.25"/>
+<rect x="9" y="4" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="4" width="1" height="1" fill-opacity="0.17"/>
+<rect x="12" y="4" width="1" height="1" fill-opacity="0.91"/>
+<rect x="13" y="4" width="4" height="1"/>
+<rect x="17" y="4" width="1" height="1" fill-opacity="0.98"/>
+<rect x="18" y="4" width="1" height="1" fill-opacity="0.13"/>
+<rect x="20" y="4" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="5" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="5" width="1" height="1" fill-opacity="0.71"/>
+<rect x="12" y="5" width="1" height="1"/>
+<rect x="13" y="5" width="1" height="1" fill-opacity="0.98"/>
+<rect x="14" y="5" width="2" height="1"/>
+<rect x="16" y="5" width="1" height="1" fill-opacity="0.97"/>
+<rect x="17" y="5" width="1" height="1"/>
+<rect x="18" y="5" width="1" height="1" fill-opacity="0.41"/>
+<rect x="20" y="5" width="1" height="1" fill-opacity="0.02"/>
+<rect x="9" y="6" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="6" width="1" height="1" fill-opacity="0.53"/>
+<rect x="12" y="6" width="1" height="1"/>
+<rect x="13" y="6" width="1" height="1" fill-opacity="0.99"/>
+<rect x="14" y="6" width="2" height="1"/>
+<rect x="16" y="6" width="1" height="1" fill-opacity="0.98"/>
+<rect x="17" y="6" width="1" height="1"/>
+<rect x="18" y="6" width="1" height="1" fill-opacity="0.54"/>
+<rect x="20" y="6" width="1" height="1" fill-opacity="0.02"/>
+<rect x="12" y="7" width="1" height="1" fill-opacity="0.84"/>
+<rect x="13" y="7" width="1" height="1"/>
+<rect x="14" y="7" width="1" height="1" fill-opacity="0.99"/>
+<rect x="15" y="7" width="1" height="1"/>
+<rect x="16" y="7" width="1" height="1" fill-opacity="0.98"/>
+<rect x="17" y="7" width="1" height="1"/>
+<rect x="18" y="7" width="1" height="1" fill-opacity="0.45"/>
+<rect x="20" y="7" width="1" height="1" fill-opacity="0.02"/>
+<rect x="11" y="8" width="1" height="1" fill-opacity="0.03"/>
+<rect x="12" y="8" width="1" height="1" fill-opacity="0.83"/>
+<rect x="13" y="8" width="1" height="1"/>
+<rect x="14" y="8" width="1" height="1" fill-opacity="0.99"/>
+<rect x="15" y="8" width="2" height="1"/>
+<rect x="17" y="8" width="1" height="1" fill-opacity="0.96"/>
+<rect x="18" y="8" width="1" height="1" fill-opacity="0.13"/>
+<rect x="20" y="8" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="9" width="2" height="1" fill-opacity="0.01"/>
+<rect x="12" y="9" width="1" height="1" fill-opacity="0.66"/>
+<rect x="13" y="9" width="2" height="1" fill-opacity="0.99"/>
+<rect x="15" y="9" width="1" height="1" fill-opacity="0.98"/>
+<rect x="16" y="9" width="1" height="1"/>
+<rect x="17" y="9" width="1" height="1" fill-opacity="0.56"/>
+<rect x="19" y="9" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="10" width="1" height="1" fill-opacity="0.02"/>
+<rect x="12" y="10" width="1" height="1" fill-opacity="0.48"/>
+<rect x="13" y="10" width="1" height="1"/>
+<rect x="14" y="10" width="1" height="1" fill-opacity="0.98"/>
+<rect x="15" y="10" width="2" height="1"/>
+<rect x="17" y="10" width="1" height="1" fill-opacity="0.17"/>
+<rect x="18" y="10" width="1" height="1" fill-opacity="0.02"/>
+<rect x="19" y="10" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="11" width="1" height="1" fill-opacity="0.02"/>
+<rect x="12" y="11" width="1" height="1" fill-opacity="0.04"/>
+<rect x="13" y="11" width="1" height="1" fill-opacity="0.26"/>
+<rect x="14" y="11" width="1" height="1" fill-opacity="0.87"/>
+<rect x="15" y="11" width="2" height="1"/>
+<rect x="17" y="11" width="1" height="1" fill-opacity="0.33"/>
+<rect x="20" y="11" width="1" height="1" fill-opacity="0.02"/>
+<rect x="21" y="11" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="12" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="12" width="1" height="1" fill-opacity="0.2"/>
+<rect x="13" y="12" width="1" height="1" fill-opacity="0.58"/>
+<rect x="14" y="12" width="2" height="1" fill-opacity="0.99"/>
+<rect x="16" y="12" width="1" height="1"/>
+<rect x="17" y="12" width="1" height="1" fill-opacity="0.92"/>
+<rect x="18" y="12" width="1" height="1" fill-opacity="0.36"/>
+<rect x="19" y="12" width="1" height="1" fill-opacity="0.05"/>
+<rect x="22" y="12" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="13" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="13" width="1" height="1" fill-opacity="0.4"/>
+<rect x="11" y="13" width="1" height="1" fill-opacity="0.82"/>
+<rect x="12" y="13" width="7" height="1"/>
+<rect x="19" y="13" width="1" height="1" fill-opacity="0.88"/>
+<rect x="20" y="13" width="1" height="1" fill-opacity="0.56"/>
+<rect x="21" y="13" width="1" height="1" fill-opacity="0.15"/>
+<rect x="7" y="14" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="14" width="1" height="1" fill-opacity="0.53"/>
+<rect x="10" y="14" width="3" height="1"/>
+<rect x="13" y="14" width="1" height="1" fill-opacity="0.99"/>
+<rect x="14" y="14" width="4" height="1"/>
+<rect x="18" y="14" width="1" height="1" fill-opacity="0.99"/>
+<rect x="19" y="14" width="2" height="1"/>
+<rect x="21" y="14" width="1" height="1" fill-opacity="0.95"/>
+<rect x="22" y="14" width="1" height="1" fill-opacity="0.26"/>
+<rect x="24" y="14" width="1" height="1" fill-opacity="0.01"/>
+<rect x="6" y="15" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="15" width="1" height="1" fill-opacity="0.15"/>
+<rect x="9" y="15" width="1" height="1"/>
+<rect x="10" y="15" width="2" height="1" fill-opacity="0.99"/>
+<rect x="12" y="15" width="8" height="1"/>
+<rect x="20" y="15" width="1" height="1" fill-opacity="0.97"/>
+<rect x="21" y="15" width="1" height="1"/>
+<rect x="22" y="15" width="1" height="1" fill-opacity="0.78"/>
+<rect x="24" y="15" width="1" height="1" fill-opacity="0.01"/>
+<rect x="6" y="16" width="1" height="1" fill-opacity="0.02"/>
+<rect x="8" y="16" width="1" height="1" fill-opacity="0.42"/>
+<rect x="9" y="16" width="1" height="1"/>
+<rect x="10" y="16" width="1" height="1" fill-opacity="0.98"/>
+<rect x="11" y="16" width="11" height="1"/>
+<rect x="22" y="16" width="1" height="1" fill-opacity="0.91"/>
+<rect x="23" y="16" width="1" height="1" fill-opacity="0.05"/>
+<rect x="6" y="17" width="1" height="1" fill-opacity="0.02"/>
+<rect x="8" y="17" width="1" height="1" fill-opacity="0.51"/>
+<rect x="9" y="17" width="1" height="1"/>
+<rect x="10" y="17" width="2" height="1" fill-opacity="0.98"/>
+<rect x="12" y="17" width="1" height="1" fill-opacity="0.99"/>
+<rect x="13" y="17" width="6" height="1"/>
+<rect x="19" y="17" width="3" height="1" fill-opacity="0.99"/>
+<rect x="22" y="17" width="1" height="1" fill-opacity="0.95"/>
+<rect x="23" y="17" width="1" height="1" fill-opacity="0.1"/>
+<rect x="6" y="18" width="2" height="1" fill-opacity="0.01"/>
+<rect x="8" y="18" width="1" height="1" fill-opacity="0.79"/>
+<rect x="9" y="18" width="1" height="1" fill-opacity="0.98"/>
+<rect x="10" y="18" width="1" height="1" fill-opacity="0.99"/>
+<rect x="11" y="18" width="7" height="1"/>
+<rect x="18" y="18" width="1" height="1" fill-opacity="0.99"/>
+<rect x="19" y="18" width="3" height="1"/>
+<rect x="22" y="18" width="1" height="1" fill-opacity="0.97"/>
+<rect x="23" y="18" width="1" height="1" fill-opacity="0.06"/>
+<rect x="6" y="19" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="19" width="1" height="1" fill-opacity="0.48"/>
+<rect x="9" y="19" width="1" height="1"/>
+<rect x="10" y="19" width="1" height="1" fill-opacity="0.99"/>
+<rect x="11" y="19" width="1" height="1" fill-opacity="0.38"/>
+<rect x="12" y="19" width="1" height="1" fill-opacity="0.76"/>
+<rect x="13" y="19" width="1" height="1"/>
+<rect x="14" y="19" width="2" height="1" fill-opacity="0.99"/>
+<rect x="16" y="19" width="3" height="1"/>
+<rect x="19" y="19" width="1" height="1" fill-opacity="0.69"/>
+<rect x="20" y="19" width="1" height="1" fill-opacity="0.79"/>
+<rect x="21" y="19" width="1" height="1" fill-opacity="0.63"/>
+<rect x="22" y="19" width="1" height="1" fill-opacity="0.79"/>
+<rect x="23" y="19" width="1" height="1" fill-opacity="0.26"/>
+<rect x="25" y="19" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="20" width="1" height="1" fill-opacity="0.03"/>
+<rect x="9" y="20" width="1" height="1" fill-opacity="0.63"/>
+<rect x="10" y="20" width="1" height="1" fill-opacity="0.91"/>
+<rect x="11" y="20" width="1" height="1" fill-opacity="0.37"/>
+<rect x="12" y="20" width="1" height="1" fill-opacity="0.48"/>
+<rect x="13" y="20" width="4" height="1"/>
+<rect x="17" y="20" width="1" height="1" fill-opacity="0.44"/>
+<rect x="18" y="20" width="1" height="1" fill-opacity="0.8"/>
+<rect x="19" y="20" width="1" height="1" fill-opacity="0.2"/>
+<rect x="20" y="20" width="1" height="1" fill-opacity="0.33"/>
+<rect x="21" y="20" width="1" height="1" fill-opacity="0.4"/>
+<rect x="22" y="20" width="1" height="1" fill-opacity="0.77"/>
+<rect x="23" y="20" width="1" height="1" fill-opacity="0.76"/>
+<rect x="25" y="20" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="21" width="1" height="1" fill-opacity="0.88"/>
+<rect x="11" y="21" width="1" height="1" fill-opacity="0.93"/>
+<rect x="12" y="21" width="1" height="1" fill-opacity="0.86"/>
+<rect x="13" y="21" width="1" height="1" fill-opacity="0.64"/>
+<rect x="14" y="21" width="1" height="1" fill-opacity="0.24"/>
+<rect x="15" y="21" width="1" height="1" fill-opacity="0.8"/>
+<rect x="16" y="21" width="1" height="1"/>
+<rect x="17" y="21" width="1" height="1" fill-opacity="0.19"/>
+<rect x="18" y="21" width="1" height="1" fill-opacity="0.25"/>
+<rect x="19" y="21" width="1" height="1" fill-opacity="0.46"/>
+<rect x="20" y="21" width="1" height="1" fill-opacity="0.76"/>
+<rect x="21" y="21" width="1" height="1" fill-opacity="0.66"/>
+<rect x="22" y="21" width="1" height="1" fill-opacity="0.17"/>
+<rect x="23" y="21" width="1" height="1" fill-opacity="0.24"/>
+<rect x="8" y="22" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="22" width="1" height="1" fill-opacity="0.31"/>
+<rect x="10" y="22" width="1" height="1" fill-opacity="0.47"/>
+<rect x="11" y="22" width="1" height="1" fill-opacity="0.3"/>
+<rect x="12" y="22" width="1" height="1" fill-opacity="0.98"/>
+<rect x="13" y="22" width="1" height="1" fill-opacity="0.69"/>
+<rect x="14" y="22" width="1" height="1" fill-opacity="0.25"/>
+<rect x="15" y="22" width="1" height="1" fill-opacity="0.17"/>
+<rect x="16" y="22" width="1" height="1" fill-opacity="0.94"/>
+<rect x="17" y="22" width="1" height="1" fill-opacity="0.65"/>
+<rect x="18" y="22" width="1" height="1" fill-opacity="0.24"/>
+<rect x="19" y="22" width="1" height="1" fill-opacity="0.85"/>
+<rect x="20" y="22" width="1" height="1" fill-opacity="0.84"/>
+<rect x="21" y="22" width="1" height="1" fill-opacity="0.25"/>
+<rect x="22" y="22" width="1" height="1" fill-opacity="0.58"/>
+<rect x="23" y="22" width="1" height="1" fill-opacity="0.17"/>
+<rect x="25" y="22" width="1" height="1" fill-opacity="0.01"/>
+<rect x="7" y="23" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="23" width="1" height="1" fill-opacity="0.53"/>
+<rect x="10" y="23" width="1" height="1" fill-opacity="0.23"/>
+<rect x="11" y="23" width="1" height="1" fill-opacity="0.05"/>
+<rect x="12" y="23" width="1" height="1" fill-opacity="0.99"/>
+<rect x="13" y="23" width="1" height="1"/>
+<rect x="14" y="23" width="1" height="1" fill-opacity="0.6"/>
+<rect x="16" y="23" width="1" height="1" fill-opacity="0.56"/>
+<rect x="17" y="23" width="1" height="1" fill-opacity="0.87"/>
+<rect x="18" y="23" width="1" height="1" fill-opacity="0.11"/>
+<rect x="19" y="23" width="1" height="1"/>
+<rect x="20" y="23" width="1" height="1" fill-opacity="0.71"/>
+<rect x="22" y="23" width="1" height="1" fill-opacity="0.24"/>
+<rect x="23" y="23" width="1" height="1" fill-opacity="0.07"/>
+<rect x="10" y="24" width="1" height="1" fill-opacity="0.22"/>
+<rect x="11" y="24" width="1" height="1" fill-opacity="0.05"/>
+<rect x="12" y="24" width="1" height="1" fill-opacity="0.92"/>
+<rect x="13" y="24" width="2" height="1"/>
+<rect x="15" y="24" width="1" height="1" fill-opacity="0.03"/>
+<rect x="16" y="24" width="1" height="1" fill-opacity="0.48"/>
+<rect x="17" y="24" width="1" height="1" fill-opacity="0.98"/>
+<rect x="18" y="24" width="1" height="1" fill-opacity="0.03"/>
+<rect x="19" y="24" width="1" height="1" fill-opacity="0.47"/>
+<rect x="20" y="24" width="1" height="1" fill-opacity="0.64"/>
+<rect x="21" y="24" width="1" height="1" fill-opacity="0.26"/>
+<rect x="22" y="24" width="1" height="1" fill-opacity="0.07"/>
+<rect x="23" y="24" width="1" height="1" fill-opacity="0.02"/>
+<rect x="11" y="25" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="25" width="1" height="1" fill-opacity="0.44"/>
+<rect x="13" y="25" width="1" height="1" fill-opacity="0.97"/>
+<rect x="14" y="25" width="1" height="1" fill-opacity="0.84"/>
+<rect x="15" y="25" width="1" height="1" fill-opacity="0.26"/>
+<rect x="16" y="25" width="1" height="1" fill-opacity="0.95"/>
+<rect x="17" y="25" width="1" height="1"/>
+<rect x="18" y="25" width="1" height="1" fill-opacity="0.17"/>
+<rect x="19" y="25" width="1" height="1" fill-opacity="0.58"/>
+<rect x="20" y="25" width="1" height="1" fill-opacity="0.18"/>
+<rect x="21" y="25" width="1" height="1" fill-opacity="0.12"/>
+<rect x="9" y="26" width="1" height="1" fill-opacity="0.03"/>
+<rect x="10" y="26" width="1" height="1" fill-opacity="0.87"/>
+<rect x="11" y="26" width="1" height="1" fill-opacity="0.41"/>
+<rect x="12" y="26" width="1" height="1" fill-opacity="0.15"/>
+<rect x="13" y="26" width="1" height="1" fill-opacity="0.41"/>
+<rect x="14" y="26" width="1" height="1" fill-opacity="0.24"/>
+<rect x="15" y="26" width="1" height="1" fill-opacity="0.61"/>
+<rect x="16" y="26" width="2" height="1"/>
+<rect x="18" y="26" width="1" height="1" fill-opacity="0.24"/>
+<rect x="19" y="26" width="1" height="1" fill-opacity="0.15"/>
+<rect x="20" y="26" width="1" height="1" fill-opacity="0.05"/>
+<rect x="9" y="27" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="27" width="1" height="1" fill-opacity="0.45"/>
+<rect x="11" y="27" width="1" height="1" fill-opacity="0.14"/>
+<rect x="12" y="27" width="1" height="1" fill-opacity="0.12"/>
+<rect x="13" y="27" width="1" height="1" fill-opacity="0.09"/>
+<rect x="15" y="27" width="1" height="1" fill-opacity="0.83"/>
+<rect x="16" y="27" width="2" height="1"/>
+<rect x="18" y="27" width="1" height="1" fill-opacity="0.14"/>
+<rect x="14" y="28" width="1" height="1" fill-opacity="0.17"/>
+<rect x="15" y="28" width="1" height="1" fill-opacity="0.88"/>
+<rect x="16" y="28" width="1" height="1" fill-opacity="0.82"/>
+<rect x="17" y="28" width="1" height="1" fill-opacity="0.5"/>
+<rect x="19" y="28" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="29" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="29" width="1" height="1" fill-opacity="0.02"/>
+<rect x="11" y="29" width="1" height="1" fill-opacity="0.1"/>
+<rect x="12" y="29" width="1" height="1" fill-opacity="0.9"/>
+<rect x="13" y="29" width="1" height="1" fill-opacity="0.31"/>
+<rect x="14" y="29" width="1" height="1" fill-opacity="0.09"/>
+<rect x="15" y="29" width="1" height="1" fill-opacity="0.08"/>
+<rect x="16" y="29" width="1" height="1" fill-opacity="0.34"/>
+<rect x="17" y="29" width="1" height="1" fill-opacity="0.29"/>
+<rect x="19" y="29" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="30" width="1" height="1" fill-opacity="0.04"/>
+<rect x="12" y="30" width="1" height="1" fill-opacity="0.45"/>
+<rect x="13" y="30" width="2" height="1" fill-opacity="0.11"/>
+<rect x="16" y="30" width="1" height="1" fill-opacity="0.35"/>
+<rect x="17" y="30" width="1" height="1" fill-opacity="0.36"/>
+<rect x="19" y="30" width="1" height="1" fill-opacity="0.01"/>
+<rect x="14" y="31" width="1" height="1" fill-opacity="0.14"/>
+<rect x="15" y="31" width="1" height="1" fill-opacity="0.03"/>
+</g>
+</svg></span>
+      <span class="brand-text">Activity Calendar</span>
+    </a>
+    <nav class="header-nav">
+      <a href="https://apps.ashiqur.in/apps/activity-calendar/">Activity Calendar</a>
+    </nav>
   </div>
+</header>
 
-  <h2>Who I am</h2>
-  <p>Activity Calendar is an Android app made by Ashiqur Rahman (“I”, “me”). If you have a question about this policy, write to me at <a href="mailto:email@ashiqur.in">email@ashiqur.in</a>.</p>
+<main>
+  <section class="legal wrap">
+    <p class="eyebrow-row">
+      <span class="eyebrow-text">Privacy Policy</span>
+      <span class="eyebrow-dot" aria-hidden="true"></span>
+      <span class="eyebrow-note">Effective Date: October 30, 2026</span>
+    </p>
+    <h1>Privacy Policy</h1>
 
-  <h2>What the app stores</h2>
-  <p>The app saves the following on your phone, in the app’s private storage. Other apps cannot read it.</p>
-  <ul>
-    <li>Your work sessions (the start and end time of each session).</li>
-    <li>Your reminders (title, details, date and time).</li>
-    <li>Your name, if you type one in the Profile tab.</li>
-    <li>Sync settings: whether sync is on, the time of the last sync, and which Google account you used for it.</li>
-  </ul>
-  <p>I do not receive any of this. It never leaves your phone unless you turn on Google Drive sync.</p>
+    <h3>Introduction</h3>
+    <p>The <span class="highlight">Activity Calendar</span> application (shown as &ldquo;Activity&rdquo; on your phone) is built and maintained as a Free app. It is provided at no cost and is intended for use as is. It combines a work timer, a calendar, tasks, notes and home screen widgets. This page is used to inform users regarding the policies on the collection, use, and disclosure of information for anyone who decides to use this service.</p>
 
-  <h2>Google Drive sync (optional)</h2>
-  <p>Sync is off until you tap “Turn on Google Drive sync” and approve it on Google’s own screen.</p>
-  <ul>
-    <li>The app asks for one permission, <code>drive.appdata</code>. It lets the app read and write a single file in a hidden folder in your Google Drive. Only this app can open that folder.</li>
-    <li>The app cannot see your other Drive files, photos or documents.</li>
-    <li>The file contains the same data listed above: sessions, reminders and your name.</li>
-    <li>Data goes directly between your phone and Google. It does not pass through any server of mine.</li>
-    <li>Sync runs shortly after you make a change, when you open the app, and about every 6 hours in the background. This lets several of your phones stay in step.</li>
-  </ul>
-  <p>The app’s use and transfer of information received from Google APIs follows the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+    <h3>Information Stored on Your Device</h3>
+    <ul>
+      <li><span class="highlight">Your Content:</span> The application stores what you create inside it: work sessions and the activities they belong to, tasks and their reminders, notes (including drawings), the groups they are in, and the items waiting in the Trash.</li>
+      <li><span class="highlight">Your Profile:</span> If you choose to, you can enter a name and pick a profile photo. A photo is chosen with the Android photo picker, which gives the app only the single image you select and never your whole gallery.</li>
+      <li><span class="highlight">Settings:</span> Small preferences, such as the tab you last used, sort orders and which activities are starred or ticked, are kept on the device so the app opens where you left off.</li>
+      <li><span class="highlight">Stays on Your Phone:</span> All of this is stored locally on your device. The developer does not receive it, cannot see it, and operates no server that collects it. No account with the developer is needed to use the app.</li>
+    </ul>
 
-  <h2>Permissions the app uses</h2>
-  <ul>
-    <li><strong>Internet:</strong> only to sync with your Google Drive when sync is on.</li>
-    <li><strong>Notifications:</strong> to show your reminders at the time you set.</li>
-    <li><strong>Run at startup:</strong> to set your reminders again after your phone restarts or the time or time zone changes.</li>
-  </ul>
+    <h3>Optional Google Drive Sync</h3>
+    <p>Google Drive sync is <span class="highlight">off until you turn it on</span> from the Profile tab. It lets you keep the same data on more than one phone and keep a backup.</p>
+    <ul>
+      <li><span class="highlight">Your Own Drive:</span> When sync is on, the application asks you to sign in with a Google account and to allow access to the <span class="highlight">Drive app data folder</span> only (the <code>drive.appdata</code> permission). This is a hidden folder reserved for this app inside your own Google Drive. The application cannot see or change your other Drive files, and other apps cannot read this folder.</li>
+      <li><span class="highlight">What Is Uploaded:</span> A single backup file containing your work sessions, activities, tasks, notes and drawings, groups, Trash items, your name and your profile photo (if you set them).</li>
+      <li><span class="highlight">Your Email Address:</span> The application reads the email address of the signed-in Google account only to show you which account is syncing. It is kept on your device.</li>
+      <li><span class="highlight">No Developer Access:</span> Data travels directly between your phone and Google. It does not pass through any server operated by the developer, and the developer cannot read your backup.</li>
+      <li><span class="highlight">Your Control:</span> You can turn sync off at any time. &ldquo;Change email&rdquo; moves the sync to another account and, once the new account has synced, deletes the old account&rsquo;s backup. &ldquo;Delete all data&rdquo; removes your data from the phone and from the Google Drive backup (see below).</li>
+      <li><span class="highlight">Google&rsquo;s Policies:</span> Signing in and storing the backup are handled by Google and are covered by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>. The application&rsquo;s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including its Limited Use requirements. The information is used only to provide the sync and backup feature, and is never used for advertising or sold.</li>
+    </ul>
 
-  <h2>What I do not do</h2>
-  <ul>
-    <li>I do not collect, store or see your personal information.</li>
-    <li>I do not show ads and I do not use analytics or crash-tracking tools.</li>
-    <li>I do not sell, rent or share your data with anyone.</li>
-    <li>The app has no account or sign-up of its own.</li>
-  </ul>
+    <h3>Permissions</h3>
+    <ul>
+      <li><span class="highlight">Internet:</span> Used only for Google Drive sync, and to open the links you tap in the app. The application makes no other network requests.</li>
+      <li><span class="highlight">Notifications:</span> Used to show task reminders at the time you set. They are scheduled and shown on your device.</li>
+      <li><span class="highlight">Run at Startup:</span> Used to set your reminders again after the phone restarts, and to update the calendar widget when the phone&rsquo;s time or time zone changes.</li>
+      <li><span class="highlight">Not Requested:</span> The application does not use your camera, microphone, contacts, location, SMS, or storage permissions.</li>
+    </ul>
 
-  <h2>Third-party services</h2>
-  <p>When sync is on, the app uses Google Play services and Google Drive. Google’s handling of your data is covered by the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
-  <p>If you use Android’s own device backup, Android may also include the app’s data in that backup. That backup is managed by Google and your device settings, not by me.</p>
+    <h3>Home Screen Widgets</h3>
+    <p>The calendar widget, the Add activity (+) widget and the Starred activities widget show information from the app on your home screen and let you start or stop the timer, pick activities, or add an activity. They read data stored on your device and do not send anything anywhere.</p>
 
-  <h2>Your choices and deleting your data</h2>
-  <ul>
-    <li><strong>Stop syncing:</strong> open the Profile tab and tap “Turn off”. Your data on the phone and in Drive stays as it is.</li>
-    <li><strong>Remove the Drive copy:</strong> in the Google Drive website, go to Settings, then Manage apps, find Activity Calendar and choose “Delete hidden app data”.</li>
-    <li><strong>Take back access:</strong> open <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> and remove Activity Calendar.</li>
-    <li><strong>Remove data from your phone:</strong> delete individual sessions and reminders in the app, or uninstall the app to remove everything stored on the device.</li>
-  </ul>
+    <h3>Log Data and Third-Party Services</h3>
+    <ul>
+      <li><span class="highlight">No Tracking:</span> This application does not use analytics tools, crash-reporting services, advertising identifiers, or background tracking of your behavior or location.</li>
+      <li><span class="highlight">No Advertisements:</span> No advertising network software is integrated into this application.</li>
+      <li><span class="highlight">Google Play Services:</span> The only third-party component involved in handling data is Google&rsquo;s sign-in and authorization library, used solely for the optional Drive sync described above.</li>
+    </ul>
 
-  <h2>Children</h2>
-  <p>The app is not made for children, and because I collect no personal information, I do not knowingly collect any from children.</p>
+    <h3>Deleting Your Data</h3>
+    <ul>
+      <li><span class="highlight">Trash:</span> Deleted tasks, notes, groups and work sessions wait in the Trash for 30 days so you can restore them, then are removed for good. You can also remove an item or empty the Trash yourself at any time.</li>
+      <li><span class="highlight">Delete All Data:</span> In the Profile tab, &ldquo;Delete all data&rdquo; removes your work sessions, tasks, notes, name and photo from the phone and from the Google Drive backup of the signed-in account. It starts after a short countdown, during which you can cancel it.</li>
+      <li><span class="highlight">Uninstalling:</span> Removing the application deletes the data stored on your device. A Google Drive backup, if you made one, stays in your Drive until you delete it with &ldquo;Delete all data&rdquo; or remove this app&rsquo;s hidden data in your Google Drive settings.</li>
+    </ul>
 
-  <h2>Changes to this policy</h2>
-  <p>If I change this policy, I will post the new version on this page and update the date at the top.</p>
+    <h3>Sharing of Information</h3>
+    <p>Your information is not sold, rented, or shared with anyone. The only place it can go is your own Google Drive, and only if you turn sync on.</p>
 
-  <h2>Contact</h2>
-  <p>Questions or requests: <a href="mailto:email@ashiqur.in">email@ashiqur.in</a></p>
+    <h3>Feedback and Links in the App</h3>
+    <p>The Profile tab has round buttons for feedback, this Privacy Policy and the developer&rsquo;s YouTube channel. They open in your email app, browser or another app on your phone. Feedback is sent only if you press send in your email app, and contains only what you write. Websites and apps you reach through these links have their own privacy practices, which this policy does not cover.</p>
 
-  <footer>© 2026 Ashiqur Rahman. Activity Calendar for Android.</footer>
+    <h3>Children&rsquo;s Privacy</h3>
+    <p>This application does not collect personal information from anyone, including children, and the developer never receives any. Google Drive sync requires a Google account, which is subject to Google&rsquo;s own age requirements. The application contains no advertising and no social features.</p>
 
+    <h3>Changes to This Privacy Policy</h3>
+    <p>This Privacy Policy may be updated from time to time, for example when the application gets new features. You are advised to review this page periodically for any changes. Any updates will be made live by updating the text directly on this hosted webpage, and the effective date above will change.</p>
+
+    <h3>Contact Us</h3>
+    <p>If you have any questions or suggestions regarding this Privacy Policy, do not hesitate to contact the developer at <a href="mailto:email@ashiqur.in">email@ashiqur.in</a>. You can also visit the <a href="https://apps.ashiqur.in/apps/activity-calendar/">Activity Calendar page</a>.</p>
+  </section>
 </main>
+
+<footer class="site-footer wrap">
+  <div class="footer-top">
+    <span>© 2026 ashiqur - Activity Calendar.</span>
+    <span class="footer-dot" aria-hidden="true"></span>
+    <a href="https://apps.ashiqur.in/apps/activity-calendar/">Activity Calendar</a>
+  </div>
+  <p class="footer-updated">Last updated: October 2026</p>
+</footer>
+
+<script>
+(function(){
+  // The pixel-portrait avatar above is already rendered as the default/
+  // placeholder header logo. Test-load logo.png (same directory as the
+  // main app page, one level up from this privacy-policy page) in the
+  // background and only swap it in once it actually finishes loading -
+  // if it's missing, misnamed, or hasn't been uploaded yet, the avatar
+  // just stays put instead of showing a broken-image icon.
+  var mark = document.getElementById('brandMark');
+  if (!mark) return;
+  var probe = new Image();
+  probe.onload = function(){
+    var img = document.createElement('img');
+    img.src = '../logo.png';
+    img.alt = '';
+    mark.innerHTML = '';
+    mark.appendChild(img);
+  };
+  probe.onerror = function(){ /* keep the default avatar mark */ };
+  probe.src = '../logo.png';
+})();
+</script>
+
 </body>
 </html>
