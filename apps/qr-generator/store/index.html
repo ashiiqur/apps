@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Store - QR Generator | ashiqur</title>
+<meta name="description" content="Browse and install code generators and scanners (.aqr) for the QR Generator app.">
+<link rel="canonical" href="https://apps.ashiqur.in/apps/qr-generator/store/">
+<link rel="icon" href="../favicon.png">
+<meta name="theme-color" content="#F4F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161A" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F5F0;--paper-raised:#fff;--ink:#14161A;--ink-soft:#55585F;--accent:#2F6FED;--accent-2:#00C896;--line:#DBDDD6;--radius:14px;--wrap:1080px}
+@media (prefers-color-scheme:dark){:root{--paper:#14161A;--paper-raised:#1B1E24;--ink:#F4F5F0;--ink-soft:#A6A9B1;--line:#2B2E36}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{color-scheme:light dark}
+*{scrollbar-width:thin;scrollbar-color:var(--ink-soft) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px;border:2px solid var(--paper)}
+::-webkit-scrollbar-thumb:hover{background:var(--ink-soft)}
+dialog::-webkit-scrollbar-track{background:var(--paper)}
+html{scroll-behavior:smooth;scrollbar-gutter:stable}
+html.lock{overflow:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotesk',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:'Space Mono',monospace;font-weight:700;margin:0;letter-spacing:-.01em}
+.mono{font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
+.site-header{border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:20px 24px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:32px;height:32px;color:var(--ink)}
+.brand-text{font-size:13px;font-weight:700}
+.header-nav{display:flex;gap:18px}
+.header-nav a{font-size:14px;text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px;transition:.15s}
+.header-nav a:hover{color:var(--ink);border-color:var(--ink)}
+.hero{padding:56px 24px 28px}
+.eyebrow-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 18px;font-size:12px}
+.eyebrow-row .a{color:var(--accent)}.eyebrow-row .n{color:var(--ink-soft)}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--ink-soft)}
+.hero h1{font-size:clamp(30px,5vw,44px);line-height:1.05;margin-bottom:14px}
+.hero p{color:var(--ink-soft);max-width:600px;margin:0;font-size:15.5px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;padding:8px 24px 0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.search{flex:1 1 100%;position:relative;display:block}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--ink-soft)}
+input,select,button{font:inherit;color:inherit}
+.search input{width:100%;padding:12px 14px 12px 42px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper-raised)}
+select{padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink-soft);font-family:'Space Mono',monospace;font-size:12px;cursor:pointer}
+select{color-scheme:light dark}
+select option{background:var(--paper-raised);color:var(--ink);font-family:'Space Mono',monospace}
+.filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:14px 24px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'Space Mono',monospace;font-size:12px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:transparent;cursor:pointer;color:var(--ink-soft)}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.count{padding:22px 24px 12px;font-size:12px;color:var(--ink-soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding:0 24px 28px}
+.card{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .15s,border-color .15s;text-align:left;padding:0}
+.card:hover{transform:translateY(-2px);border-color:var(--ink-soft)}
+.pv{aspect-ratio:16/10;background:var(--paper);border-bottom:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
+.pv img,.pv svg{width:100%;height:100%;object-fit:cover}
+.body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.body h3{font-size:15px}
+.by{font-size:13px;color:var(--ink-soft)}
+.desc{font-size:13.5px;color:var(--ink-soft);margin:0;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:6px;border:1px solid var(--line);color:var(--ink-soft)}
+.tag.on{border-color:var(--accent-2);color:var(--accent-2)}
+.tag.off{opacity:.55;text-decoration:line-through}
+.tag.ok{background:var(--accent);border-color:var(--accent);color:#fff}
+.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--ink-soft)}
+dialog{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);padding:0;width:min(720px,calc(100% - 24px));max-height:92vh}
+dialog{overscroll-behavior:contain;overflow-y:auto}
+dialog::backdrop{background:rgba(10,12,16,.6)}
+.m-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);font-size:12px}
+.mt{display:flex;align-items:center;gap:8px;min-width:0}.mt>span{white-space:nowrap}.mt b{color:var(--accent);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dot{flex-shrink:0}
+.m-head{gap:12px}
+.x{flex-shrink:0;background:none;border:1px solid var(--line);border-radius:8px;width:32px;height:32px;cursor:pointer}
+.m-body{padding:20px;display:grid;gap:18px}
+.m-body .pv{border:1px solid var(--line);border-radius:var(--radius);aspect-ratio:16/8}
+.m-body h2{font-size:24px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.meta div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--paper-raised);font-size:14px}
+.meta span{display:block;font-size:10.5px;color:var(--ink-soft)}
+.car{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:8px;background:var(--paper-raised)}
+.trk{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.trk{scrollbar-width:none}.trk::-webkit-scrollbar{display:none}
+.sl{position:relative;flex:0 0 100%;scroll-snap-align:center;aspect-ratio:16/9;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper);display:grid;place-items:center}
+.ld{position:absolute;inset:0;opacity:.6;transition:opacity .3s}
+.sl.rdy .ld{opacity:0;pointer-events:none}
+.sl img,.sl video{position:relative;z-index:1;opacity:0;transition:opacity .3s}
+.sl.rdy img,.sl.rdy video{opacity:1}
+.sl img,.sl video,.sl svg{width:100%;height:100%;object-fit:contain;display:block}
+.ar{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--paper);cursor:pointer;display:grid;place-items:center;z-index:2;transition:opacity .15s}
+.ar svg{width:18px;height:18px}.ar.l{left:16px}.ar.r{right:16px}.ar[disabled]{opacity:0;pointer-events:none}
+.dlbar[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.dlbar{width:100%;justify-content:center;padding:15px 18px;font-size:15px}
+.dlbar svg.c{transition:transform .3s}.dlbar[aria-expanded=true] svg.c{transform:rotate(180deg)}
+.dr{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.dr.open{grid-template-rows:1fr}
+.dr>div{overflow:hidden;min-height:0}
+.dr .in{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;padding-top:10px}
+.dr .btn{justify-content:center}
+.btn[aria-disabled=true]{opacity:.5;pointer-events:none;border-style:dashed}
+@media (prefers-reduced-motion:reduce){.dr{transition:none}}
+.pgw{display:flex;justify-content:center;padding:0 24px 72px;overflow-x:auto}
+.pager{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper-raised)}
+.pager:empty{display:none}
+.pager button,.pager span{font-family:'Space Mono',monospace;font-size:13px;padding:10px 14px;border:0;border-right:1px solid var(--line);background:transparent;color:var(--accent);cursor:pointer;white-space:nowrap}
+.pager>:last-child{border-right:0}
+.pager button:hover:not([disabled]):not([aria-current]){background:var(--paper)}
+.pager button[aria-current]{background:var(--accent);color:#fff;font-weight:700;cursor:default}
+.pager button[disabled]{color:var(--ink-soft);cursor:default;opacity:.6}
+.pager span{color:var(--ink-soft);background:var(--paper);cursor:default}
+.engines{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.eng{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:var(--paper-raised);min-height:150px;display:flex;flex-direction:column;gap:6px}
+.eng h3{font-size:13px;display:flex;align-items:center;gap:8px}
+.eng p{margin:0;font-size:13.5px;color:var(--ink-soft)}
+.eng.na{align-items:center;justify-content:center;text-align:center;border-style:dashed;color:var(--ink-soft)}
+.eng.na svg{width:34px;height:34px;opacity:.6}
+.eng.na strong{color:var(--ink);font-size:14px}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:var(--radius);border:1px solid var(--line);background:var(--paper-raised);text-decoration:none;cursor:pointer;font-weight:500;font-size:14px}
+.btn.p{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:hover{filter:brightness(1.06)}
+.btn svg{width:16px;height:16px}
+.note{font-size:12px;color:var(--ink-soft);margin:0}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:.2s;z-index:99}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.site-footer{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:26px 24px 40px;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--line)}
+.site-footer a{text-underline-offset:3px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="https://apps.ashiqur.in/apps/qr-generator/">
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="4" y="4" width="9" height="9" rx="1.5"/><rect x="19" y="4" width="9" height="9" rx="1.5"/><rect x="4" y="19" width="9" height="9" rx="1.5"/><path d="M19 19h3v3h-3zM25 19h3M19 25h3m3 0h3v3h-3z"/></svg>
+    <span class="brand-text mono">QR Generator</span>
+  </a>
+  <nav class="header-nav"><a href="https://apps.ashiqur.in/apps/qr-generator/">QR Generator</a><a href="#top" aria-current="page">Store</a></nav>
+</div></header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="eyebrow-row mono"><span class="a">Store</span><span class="dot"></span><span class="n">.aqr packages</span></p>
+    <h1>Generators &amp; Scanners</h1>
+    <p>Add new code types to the QR Generator app. Download a <b>.aqr</b> package, open it in the app, and it installs in one tap. Every package is reviewed before it is listed.</p>
+  </section>
+
+  <div class="wrap">
+    <div class="bar">
+      <label class="search"><span class="sr-only">Search</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="q" type="search" placeholder="Search name, author or tag…" autocomplete="off"></label>
+    </div>
+    <div class="filters">
+      <select id="engine" aria-label="Engine"><option value="">All engines</option><option value="both">Generator + Scanner</option><option value="gen">Has generator</option><option value="scan">Has scanner</option></select>
+      <select id="source" aria-label="Source"><option value="">All sources</option><option value="Official">Official</option><option value="Third-party">Third-party</option></select>
+      <select id="kind" aria-label="Kind"><option value="">Existing &amp; original</option><option value="Existing code">Existing code</option><option value="Original code">Original code</option></select>
+      <select id="sort" aria-label="Sort"><option value="rand">Shuffled</option><option value="new">Newest</option><option value="az">A–Z</option><option value="size">Smallest</option></select>
+      <div class="chips" id="chips" role="group" aria-label="Categories"></div>
+    </div>
+    <div class="count mono" id="count" aria-live="polite"></div>
+    <div class="grid" id="grid"></div>
+    <div class="pgw"><nav class="pager" id="pager" aria-label="Pages"></nav></div>
+  </div>
+</main>
+
+<dialog id="dlg" aria-label="Package details"><div class="m-head mono"><span class="mt"><span>Package details</span><i class="dot" aria-hidden="true"></i><b id="mn"></b></span><button class="x" id="close" aria-label="Close">✕</button></div><div class="m-body" id="mb"></div></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<footer class="site-footer">
+  <div><a href="https://apps.ashiqur.in/apps/qr-generator/">QR Generator</a> · <a href="https://apps.ashiqur.in/apps/qr-generator/privacy-policy/">Privacy Policy</a></div>
+  <p style="margin:0;font-size:11px;opacity:.7">Third-party packages are provided by their authors after approval.</p>
+</footer>
+
+<script src="packages.js"></script>
+<script>
+/* Package list lives in packages.js — normalised here. */
+const yes=v=>/^(yes|true|y|1)$/i.test(String(v).trim());
+const STORE=(typeof PACKAGES!=="undefined"?PACKAGES:(console.warn("packages.js was not loaded"),[])).map(p=>({source:"Third-party",kind:"Existing code",cat:"Custom",ver:"1.0.0",desc:"",date:"",author:"Unknown",...p,
+ id:p.name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""),
+ generator:yes(p.generator)?{desc:p.generatorDesc||""}:null,
+ scanner:yes(p.scanner)?{desc:p.scannerDesc||""}:null})).filter(p=>p.generator||p.scanner||yes(p.show));
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const PER=18,urlPg=()=>Math.max(1,parseInt(new URLSearchParams(location.search).get("page"))||1);
+let cat="",cur="",pg=urlPg();
+const rank=new Map(STORE.map(p=>[p.id,Math.random()])); // new random order on every page load
+
+function ph(seed){ // placeholder preview drawn from the id
+  let h=0;for(const c of seed)h=(h*31+c.charCodeAt(0))>>>0;
+  let r="";for(let y=0;y<9;y++)for(let x=0;x<9;x++){h=(h*1664525+1013904223)>>>0;if(h>>>29>2)r+=`<rect x="${x*10+5}" y="${y*10+5}" width="10" height="10"/>`}
+  return `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" fill="currentColor" style="padding:14px;color:var(--ink);opacity:.85" aria-hidden="true">${r}</svg>`;
+}
+const dirOf=p=>(p.dir||p.name.trim().replace(/\s+/g,"-")),base=p=>"assets/packages/"+encodeURIComponent(dirOf(p))+"/";
+const pv=p=>`<img src="${base(p)}preview.png" data-ph="${esc(p.id)}" alt="Preview of ${esc(p.name)}" loading="lazy">`;
+addEventListener('error',e=>{const t=e.target;if(!t||!/^(IMG|VIDEO)$/.test(t.tagName))return;
+ if(t.dataset.ph){t.parentElement.innerHTML=ph(t.dataset.ph);return}
+ const sl=t.closest('.sl'),tr=sl&&sl.parentElement;if(!sl)return;sl.remove();
+ if(!tr.children.length){const p=STORE.find(x=>x.id===tr.dataset.pid);tr.innerHTML=`<div class="sl"><div class="ld">${ph(p.id)}</div><img src="${base(p)}preview.png" data-ph="${esc(p.id)}" alt="Preview of ${esc(p.name)}" onload="this.parentElement.classList.add('rdy')"></div>`}tr.dispatchEvent(new Event('scroll'))},true);
+const slides=p=>{const a=[],b=base(p)+"screenshots/";
+ if(p.video)a.push(`<video src="${b}video.mp4" poster="${base(p)}preview.png" controls playsinline preload="metadata"></video>`);
+ for(let i=1;i<=(p.shots||0);i++)a.push(`<img src="${b}${i}.jpeg" alt="${esc(p.name)} screenshot ${i}" loading="lazy">`);
+ if(!a.length)a.push(`<img src="${base(p)}preview.png" data-ph="${esc(p.id)}" alt="Preview of ${esc(p.name)}">`);
+ return a.map(h=>`<div class="sl"><div class="ld">${ph(p.id)}</div>${h}</div>`).join("")};
+const chev=d=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="${d}"/></svg>`;
+const engTags=p=>!p.generator&&!p.scanner?`<span class="note">No engines available</span>`:`<span class="tag ${p.generator?'on':'off'}">Generator</span><span class="tag ${p.scanner?'on':'off'}">Scanner</span>`;
+
+function build(){
+  $('#chips').innerHTML=["", ...new Set(STORE.map(p=>p.cat))].map(c=>`<button class="chip" aria-pressed="${c===cat}" data-c="${esc(c)}">${c||"All"}</button>`).join("");
+}
+function render(reset){
+  const q=$('#q').value.trim().toLowerCase(),e=$('#engine').value,s=$('#source').value,k=$('#kind').value,so=$('#sort').value;
+  let l=STORE.filter(p=>(!q||[p.name,p.author,p.cat,p.desc].join(" ").toLowerCase().includes(q))
+   &&(!e||(e==="both"?p.generator&&p.scanner:e==="gen"?p.generator:p.scanner))
+   &&(!s||p.source===s)&&(!k||p.kind===k)&&(!cat||p.cat===cat));
+  l.sort((a,b)=>so==="rand"?rank.get(a.id)-rank.get(b.id):so==="az"?a.name.localeCompare(b.name):so==="size"?(a.size||0)-(b.size||0):b.date.localeCompare(a.date));
+  if(reset){pg=1;if(location.search)history.replaceState(history.state,"",location.pathname+location.hash)}
+  const pages=Math.max(1,Math.ceil(l.length/PER));pg=Math.min(Math.max(1,pg),pages);
+  const all=l;l=l.slice((pg-1)*PER,pg*PER);pager(pages);
+  $('#count').textContent=all.length+" package"+(all.length===1?"":"s")+(pages>1?" · page "+pg+" of "+pages:"");
+  $('#grid').innerHTML=l.length?l.map(p=>`<button class="card" data-id="${esc(p.id)}"><div class="pv">${pv(p)}</div><div class="body"><h3>${esc(p.name)}</h3><div class="by">by ${esc(p.author)}</div><p class="desc">${esc(p.desc)}</p><div class="tags">${engTags(p)}</div></div></button>`).join(""):`<div class="empty">${STORE.length?"No packages match your search.":"No engines available yet.<br><span class=\"note\">New generators and scanners will appear here once they are published.</span>"}</div>`;
+}
+const na=t=>`<div class="eng na"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg><strong>${t} engine not available</strong><span style="font-size:13px">This package doesn’t include a ${t.toLowerCase()}.</span></div>`;
+const dl=(p,x,k)=>`<a class="btn p" href="${esc(x.file||base(p)+"engines/"+k+".aqr")}" download="${esc(dirOf(p))}-${k}.aqr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>Download ${k} .aqr</a>`;
+const eng=(t,x,p,k)=>x?`<div class="eng"><h3 class="mono">${t} <span class="tag ok">Available</span></h3><p>${esc(x.desc||"")}</p></div>`:na(t);
+
+function pager(n){const el=$('#pager');if(n<2){el.innerHTML="";return}
+  const t=new Set([1,n,pg-1,pg,pg+1]);if(pg<=3)for(let i=1;i<=5;i++)t.add(i);if(pg>=n-2)for(let i=n-4;i<=n;i++)t.add(i);
+  let h=`<button data-p="${pg-1}" ${pg<2?"disabled":""}>Previous</button>`,last=0;
+  [...t].filter(x=>x>=1&&x<=n).sort((a,b)=>a-b).forEach(x=>{if(x-last>1)h+="<span>…</span>";h+=`<button data-p="${x}" ${x===pg?'aria-current="page"':""}>${x}</button>`;last=x});
+  el.innerHTML=h+`<button data-p="${pg+1}" ${pg>=n?"disabled":""}>Next</button>`}
+function goPage(n){pg=n;history.pushState({pg:n},"",n>1?"?page="+n:location.pathname);render();$('#count').scrollIntoView({behavior:'smooth',block:'start'})}
+function open(id,push){
+  const p=STORE.find(x=>x.id===id);if(!p)return;
+  if($('#dlg').open&&cur===id)return;cur=id;$('#mn').textContent=p.name;
+  const none=!p.generator&&!p.scanner;
+  const gb=p.generator?dl(p,p.generator,"generator"):`<span class="btn" aria-disabled="true">Generator not available</span>`,sb=p.scanner?dl(p,p.scanner,"scanner"):`<span class="btn" aria-disabled="true">Scanner not available</span>`;
+  $('#mb').innerHTML=`<div><button class="btn p dlbar" id="dlb" aria-expanded="false" aria-controls="dr" ${none?'disabled':''}>Download <svg class="c" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button><div class="dr" id="dr"><div><div class="in">${gb}${sb}</div></div></div>${none?'<p class="note" style="margin-top:10px;text-align:center">No engines are available for this package yet.</p>':""}</div>
+  <div class="car"><div class="trk" id="trk" data-pid="${esc(p.id)}" tabindex="0" aria-label="Previews">${slides(p)}</div><button class="ar l" id="pl" aria-label="Previous">${chev("m15 6-6 6 6 6")}</button><button class="ar r" id="nx" aria-label="Next">${chev("m9 6 6 6-6 6")}</button></div>
+  <div><div class="tags" style="margin-bottom:8px"><span class="tag ${p.source==='Official'?'ok':''}">${p.source==='Official'?'✓ Official':'✓ Approved third-party'}</span><span class="tag">${esc(p.kind)}</span><span class="tag">${esc(p.cat)}</span></div><h2>${esc(p.name)}</h2><div class="by">by ${esc(p.author)}</div></div>
+  <p style="margin:0;color:var(--ink-soft)">${esc(p.desc)}</p>
+  <div class="meta"><div><span class="mono">Version</span>${esc(p.ver)}</div><div><span class="mono">Size</span>${p.size?p.size+" KB":"—"}</div><div><span class="mono">Updated</span>${esc(p.date||"—")}</div><div><span class="mono">Format</span>.aqr</div></div>
+  <div class="engines">${eng("Generator",p.generator,p,"generator")}${eng("Scanner",p.scanner,p,"scanner")}</div>
+  <div class="acts"><button class="btn" id="sh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button></div>
+  <p class="note">Download the generator, the scanner, or both, then open each file with the QR Generator app to install it.</p>`;
+  $('#sh').onclick=()=>share(p);
+  $('#trk').querySelectorAll('.sl').forEach(sl=>{const m=sl.querySelector('img,video'),ok=()=>sl.classList.add('rdy');if(!m)return;
+   if(m.tagName==='IMG'){m.complete&&m.naturalWidth?ok():m.addEventListener('load',ok)}
+   else{const im=new Image();im.onload=ok;im.src=m.poster;m.addEventListener('loadeddata',ok)}});
+  $('#dlb').onclick=e=>{const o=$('#dr').classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',o)};
+  const t=$('#trk'),pl=$('#pl'),nx=$('#nx'),upd=()=>{pl.disabled=t.scrollLeft<4;nx.disabled=t.scrollLeft>t.scrollWidth-t.clientWidth-4};
+  pl.onclick=()=>t.scrollBy({left:-(t.clientWidth+8),behavior:'smooth'});nx.onclick=()=>t.scrollBy({left:t.clientWidth+8,behavior:'smooth'});
+  t.addEventListener('scroll',()=>{upd();t.querySelectorAll('video').forEach(v=>v.pause())},{passive:true});upd();
+  if(!$('#dlg').open){document.documentElement.classList.add('lock');$('#dlg').showModal();if(push)history.pushState({m:1},"","#"+id)}
+  else if(push)history.replaceState(history.state,"","#"+id);
+}
+async function share(p){
+  const url=location.origin+location.pathname+"#"+p.id,d={title:p.name+" · QR Generator Store",text:p.desc,url};
+  try{if(navigator.share){await navigator.share(d);return}}catch(e){if(e.name==="AbortError")return}
+  try{await navigator.clipboard.writeText(url);toast("Link copied")}catch(e){prompt("Copy this link",url)}
+}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+
+$('#grid').onclick=e=>{const c=e.target.closest('.card');if(c)open(c.dataset.id,true)};
+$('#chips').onclick=e=>{const b=e.target.closest('.chip');if(b){cat=b.dataset.c;build();render(true)}};
+$('#pager').onclick=e=>{const b=e.target.closest('button');if(b&&!b.disabled&&!b.hasAttribute('aria-current'))goPage(+b.dataset.p)};
+["q","engine","source","kind","sort"].forEach(i=>$('#'+i).addEventListener('input',()=>render(true)));
+$('#close').onclick=()=>$('#dlg').close();
+$('#dlg').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.close()});
+$('#dlg').addEventListener('close',()=>{document.documentElement.classList.remove('lock');cur="";
+  if(history.state&&history.state.m)history.back();else if(location.hash)history.replaceState(null,"",location.pathname+location.search)});
+const sync=()=>{const id=location.hash.slice(1);if(id&&STORE.some(p=>p.id===id))open(id,false);else if($('#dlg').open)$('#dlg').close()};
+addEventListener('popstate',()=>{const n=urlPg();if(n!==pg){pg=n;render()}sync()});addEventListener('hashchange',sync);
+build();render();if(location.hash)open(location.hash.slice(1));
+</script>
+</body>
+</html>
