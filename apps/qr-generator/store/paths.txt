@@ -1,5 +1,5 @@
-All files path will be like this e.g. for Aztec Code
-.../store/assets/packages/Aztec-Code/engines/scanner.aqr
-.../store/assets/packages/Aztec-Code/engines/generator.aqr
-.../store/assets/packages/Aztec-Code/screenshots/  (with video file like video.mp4 and 1.jpeg 2.jpeg)
 .../store/assets/packages/Aztec-Code/preview.png
+.../store/assets/packages/Aztec-Code/engines/generator.aqr
+.../store/assets/packages/Aztec-Code/engines/scanner.aqr
+.../store/assets/packages/Aztec-Code/screenshots/video.mp4
+.../store/assets/packages/Aztec-Code/screenshots/1.jpeg, 2.jpeg …
