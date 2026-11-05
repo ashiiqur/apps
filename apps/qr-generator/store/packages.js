@@ -18,6 +18,9 @@
    Dates (YYYY-MM-DD): published = first release date, date = last update.
              If published is left out, the update date is shown instead.
 
+   Provided by (shown in the package details): provider:"Us" or any name.
+             If left out: Official packages show "Us", others show the author.
+
    Optional: dir:"Folder-Name" (if the folder differs from the name),
              generatorDesc / scannerDesc (text under each engine).
    ===================================================================== */
