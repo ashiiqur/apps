@@ -84,8 +84,8 @@ dialog::backdrop{background:rgba(10,12,16,.6)}
 .m-body{padding:20px;display:grid;gap:18px}
 .m-body .pv{border:1px solid var(--line);border-radius:var(--radius);aspect-ratio:16/8}
 .m-body h2{font-size:24px}
-.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
-.meta div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--paper-raised);font-size:14px}
+.meta{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;scrollbar-width:thin}
+.meta div{flex:1 0 auto;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--paper-raised);font-size:13px;white-space:nowrap}
 .meta span{display:block;font-size:10.5px;color:var(--ink-soft)}
 .car{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:8px;background:var(--paper-raised)}
 .trk{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
