@@ -183,7 +183,7 @@ dialog::backdrop{background:rgba(10,12,16,.6)}
 <script>
 /* Package list lives in packages.js — normalised here. */
 const yes=v=>/^(yes|true|y|1)$/i.test(String(v).trim());
-const STORE=(typeof PACKAGES!=="undefined"?PACKAGES:(console.warn("packages.js was not loaded"),[])).map(p=>({source:"Third-party",kind:"Existing code",cat:"Custom",ver:"1.0.0",desc:"",date:"",author:"Unknown",...p,
+const STORE=(typeof PACKAGES!=="undefined"?PACKAGES:(console.warn("packages.js was not loaded"),[])).map(p=>({source:"Third-party",kind:"Existing code",cat:"Custom",ver:"1.0.0",desc:"",date:"",published:"",author:"Unknown",...p,
  id:p.name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""),
  generator:yes(p.generator)?{desc:p.generatorDesc||""}:null,
  scanner:yes(p.scanner)?{desc:p.scannerDesc||""}:null})).filter(p=>p.generator||p.scanner||yes(p.show));
@@ -221,7 +221,7 @@ function render(reset){
   let l=STORE.filter(p=>(!q||[p.name,p.author,p.cat,p.desc].join(" ").toLowerCase().includes(q))
    &&(!e||(e==="both"?p.generator&&p.scanner:e==="gen"?p.generator:p.scanner))
    &&(!s||p.source===s)&&(!k||p.kind===k)&&(!cat||p.cat===cat));
-  l.sort((a,b)=>so==="rand"?rank.get(a.id)-rank.get(b.id):so==="az"?a.name.localeCompare(b.name):so==="size"?(a.size||0)-(b.size||0):b.date.localeCompare(a.date));
+  l.sort((a,b)=>so==="rand"?rank.get(a.id)-rank.get(b.id):so==="az"?a.name.localeCompare(b.name):so==="size"?(a.size||0)-(b.size||0):(b.published||b.date).localeCompare(a.published||a.date));
   if(reset){pg=1;if(location.search)history.replaceState(history.state,"",location.pathname+location.hash)}
   const pages=Math.max(1,Math.ceil(l.length/PER));pg=Math.min(Math.max(1,pg),pages);
   const all=l;l=l.slice((pg-1)*PER,pg*PER);pager(pages);
@@ -247,7 +247,7 @@ function open(id,push){
   <div class="car"><div class="trk" id="trk" data-pid="${esc(p.id)}" tabindex="0" aria-label="Previews">${slides(p)}</div><button class="ar l" id="pl" aria-label="Previous">${chev("m15 6-6 6 6 6")}</button><button class="ar r" id="nx" aria-label="Next">${chev("m9 6 6 6-6 6")}</button></div>
   <div><div class="tags" style="margin-bottom:8px"><span class="tag ${p.source==='Official'?'ok':''}">${p.source==='Official'?'✓ Official':'✓ Approved third-party'}</span><span class="tag">${esc(p.kind)}</span><span class="tag">${esc(p.cat)}</span></div><h2>${esc(p.name)}</h2><div class="by">by ${esc(p.author)}</div></div>
   <p style="margin:0;color:var(--ink-soft)">${esc(p.desc)}</p>
-  <div class="meta"><div><span class="mono">Version</span>${esc(p.ver)}</div><div><span class="mono">Size</span>${p.size?p.size+" KB":"—"}</div><div><span class="mono">Updated</span>${esc(p.date||"—")}</div><div><span class="mono">Format</span>.aqr</div></div>
+  <div class="meta"><div><span class="mono">Version</span>${esc(p.ver)}</div><div><span class="mono">Size</span>${p.size?p.size+" KB":"—"}</div><div><span class="mono">Published</span>${esc(p.published||p.date||"—")}</div><div><span class="mono">Updated</span>${esc(p.date||"—")}</div><div><span class="mono">Format</span>.aqr</div></div>
   <div class="engines">${eng("Generator",p.generator,p,"generator")}${eng("Scanner",p.scanner,p,"scanner")}</div>
   <div class="acts"><button class="btn" id="sh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Share</button></div>
   <p class="note">Download the generator, the scanner, or both, then open each file with the QR Generator app to install it.</p>`;
