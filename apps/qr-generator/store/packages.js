@@ -1,29 +1,3 @@
-/* =====================================================================
-   QR Generator Store — package list.  To add a package, copy one block
-   below, paste it at the end of the list, and edit. Nothing else to touch.
-
-   Files are found automatically from the name (spaces become hyphens):
-     assets/packages/Aztec-Code/preview.png
-     assets/packages/Aztec-Code/engines/generator.aqr
-     assets/packages/Aztec-Code/engines/scanner.aqr
-     assets/packages/Aztec-Code/screenshots/video.mp4     (video:true)
-     assets/packages/Aztec-Code/screenshots/1.jpeg, 2.jpeg …   (shots:2)
-
-   generator / scanner:  "YES" → shown as available (even if no file yet)
-                         "NO"  → shown as not available (even if a file exists)
-   (Both "NO" → hidden, unless you add show:true — then it is listed with
-    a dim "No engines available" note and a disabled Download button.)
-   A package is listed in the store if at least one of them is "YES".
-
-   Dates (YYYY-MM-DD): published = first release date, date = last update.
-             If published is left out, the update date is shown instead.
-
-   Provided by (shown in the package details): provider:"Us" or any name.
-             If left out: Official packages show "Us", others show the author.
-
-   Optional: dir:"Folder-Name" (if the folder differs from the name),
-             generatorDesc / scannerDesc (text under each engine).
-   ===================================================================== */
 const PACKAGES = [
  { name:"QR Code Classic", author:"ashiqur", source:"Official", kind:"Existing code", cat:"2D",
    ver:"1.0.0", size:96, date:"2026-11-01", published:"2026-11-01",
