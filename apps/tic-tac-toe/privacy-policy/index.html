@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy - Tic Tac Toe | ashiqur</title>
+<meta name="description" content="Privacy Policy for Tic Tac Toe, a free Windows game that stores your game history on your PC, has no ads or tracking, and offers optional Google Drive sync that you control.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ashiqur Rahman">
+<link rel="canonical" href="https://apps.ashiqur.in/apps/tic-tac-toe/privacy-policy/">
+<link rel="icon" href="../favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://apps.ashiqur.in/apps/tic-tac-toe/privacy-policy/">
+<meta property="og:site_name" content="ashiqur">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Privacy Policy - Tic Tac Toe">
+<meta property="og:description" content="How Tic Tac Toe handles data: no accounts, no ads, no tracking. Game history stays on your PC unless you turn on optional Google Drive sync.">
+<meta property="og:image" content="https://apps.ashiqur.in/apps/tic-tac-toe/preview-image.png">
+<meta property="og:image:secure_url" content="https://apps.ashiqur.in/apps/tic-tac-toe/preview-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tic Tac Toe app preview">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy - Tic Tac Toe">
+<meta name="twitter:description" content="How Tic Tac Toe handles data: no accounts, no ads, no tracking. Game history stays on your PC unless you turn on optional Google Drive sync.">
+<meta name="twitter:image" content="https://apps.ashiqur.in/apps/tic-tac-toe/preview-image.png">
+<meta name="twitter:image:alt" content="Tic Tac Toe app preview">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<meta name="theme-color" content="#F4F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161A" media="(prefers-color-scheme: dark)">
+
+<style>
+  :root{
+    --paper: #F4F5F0;
+    --paper-raised: #FFFFFF;
+    --ink: #14161A;
+    --ink-soft: #55585F;
+    --accent: #2F6FED;
+    --accent-2: #00C896;
+    --line: #DBDDD6;
+    --radius: 14px;
+    --wrap: 1080px;
+  }
+
+  * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper: #14161A;
+      --paper-raised: #1B1E24;
+      --ink: #F4F5F0;
+      --ink-soft: #A6A9B1;
+      --line: #2B2E36;
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 24px; }
+  a{ color:inherit; }
+  :focus-visible{ outline:2.5px solid var(--accent); outline-offset:3px; border-radius:4px; }
+
+  h1,h2,h3{ font-family:'Space Mono', monospace; font-weight:700; margin:0; letter-spacing:-0.01em; }
+  .eyebrow-text, .eyebrow-note, .brand-text{
+    font-family:'Space Mono', monospace; text-transform:uppercase; letter-spacing:0.08em;
+  }
+
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* ---------- Header ---------- */
+  .site-header{ border-bottom:1px solid var(--line); }
+  .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:20px 24px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand-mark{ width:32px; height:32px; flex-shrink:0; color:var(--ink); }
+  .brand-mark svg{ display:block; width:100%; height:100%; }
+  .brand-mark img{ display:block; width:100%; height:100%; object-fit:contain; }
+  .brand-text{ font-size:13px; font-weight:700; }
+  .header-nav{ display:flex; gap:18px; }
+  .header-nav a{
+    font-size:14px; text-decoration:none; color:var(--ink-soft);
+    border-bottom:1px solid transparent; padding-bottom:2px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .header-nav a:hover{ color:var(--ink); border-color:var(--ink); }
+
+  /* ---------- Legal content ---------- */
+  .legal{ padding:64px 24px 88px; }
+  .eyebrow-row{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
+  .eyebrow-text{ font-size:12px; color:var(--accent); }
+  .eyebrow-dot{ width:4px; height:4px; border-radius:50%; background:var(--ink-soft); flex-shrink:0; }
+  .eyebrow-note{ font-size:12px; color:var(--ink-soft); }
+  .legal h1{ font-size:clamp(30px, 5vw, 44px); line-height:1.05; margin-bottom:36px; }
+
+  .legal h3{
+    font-size:16px; letter-spacing:0; margin-top:44px; margin-bottom:14px;
+    padding-top:28px; border-top:1px solid var(--line);
+  }
+  .legal h3:first-of-type{ margin-top:0; padding-top:0; border-top:none; }
+
+  .legal p{ margin:0 0 16px; color:var(--ink-soft); font-size:15.5px; line-height:1.65; }
+  .legal ul{ margin:0 0 16px; padding-left:20px; color:var(--ink-soft); font-size:15.5px; line-height:1.65; }
+  .legal li{ margin-bottom:10px; }
+  .legal a{ color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+  .legal a:hover{ color:var(--ink); }
+  .highlight{ font-weight:600; color:var(--ink); }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px;
+    padding:26px 24px 40px; font-size:12.5px; color:var(--ink-soft);
+  }
+  .footer-top{ display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px; }
+  .footer-top a{ text-decoration:underline; text-underline-offset:3px; color:var(--ink-soft); }
+  .footer-top a:hover{ color:var(--ink); }
+  .footer-dot{ width:5px; height:5px; border-radius:50%; background:var(--ink-soft); flex-shrink:0; }
+  .footer-updated{ margin:0; font-size:11px; color:var(--ink-soft); opacity:.7; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="https://apps.ashiqur.in/apps/tic-tac-toe/">
+      <span class="brand-mark" id="brandMark" aria-hidden="true"><svg class="app-default-mark" viewBox="2 2 28 28" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="Pixel portrait of Ashiqur Rahman">
+<style>
+  .app-default-mark { --auto-fill: #2d4159; }
+  @media (prefers-color-scheme: dark) {
+    .app-default-mark { --auto-fill: #e8ecf2; }
+  }
+</style>
+<g fill="var(--accent, var(--auto-fill))" transform="translate(16,15) scale(0.85) translate(-16,-16.5)">
+<rect x="14" y="0" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="1" width="1" height="1" fill-opacity="0.01"/>
+<rect x="16" y="1" width="2" height="1" fill-opacity="0.01"/>
+<rect x="11" y="2" width="1" height="1" fill-opacity="0.01"/>
+<rect x="13" y="2" width="1" height="1" fill-opacity="0.04"/>
+<rect x="14" y="2" width="1" height="1" fill-opacity="0.13"/>
+<rect x="15" y="2" width="1" height="1" fill-opacity="0.08"/>
+<rect x="10" y="3" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="3" width="1" height="1" fill-opacity="0.17"/>
+<rect x="13" y="3" width="1" height="1" fill-opacity="0.85"/>
+<rect x="14" y="3" width="1" height="1" fill-opacity="0.98"/>
+<rect x="15" y="3" width="1" height="1" fill-opacity="0.93"/>
+<rect x="16" y="3" width="1" height="1" fill-opacity="0.72"/>
+<rect x="17" y="3" width="1" height="1" fill-opacity="0.25"/>
+<rect x="9" y="4" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="4" width="1" height="1" fill-opacity="0.17"/>
+<rect x="12" y="4" width="1" height="1" fill-opacity="0.91"/>
+<rect x="13" y="4" width="4" height="1"/>
+<rect x="17" y="4" width="1" height="1" fill-opacity="0.98"/>
+<rect x="18" y="4" width="1" height="1" fill-opacity="0.13"/>
+<rect x="20" y="4" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="5" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="5" width="1" height="1" fill-opacity="0.71"/>
+<rect x="12" y="5" width="1" height="1"/>
+<rect x="13" y="5" width="1" height="1" fill-opacity="0.98"/>
+<rect x="14" y="5" width="2" height="1"/>
+<rect x="16" y="5" width="1" height="1" fill-opacity="0.97"/>
+<rect x="17" y="5" width="1" height="1"/>
+<rect x="18" y="5" width="1" height="1" fill-opacity="0.41"/>
+<rect x="20" y="5" width="1" height="1" fill-opacity="0.02"/>
+<rect x="9" y="6" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="6" width="1" height="1" fill-opacity="0.53"/>
+<rect x="12" y="6" width="1" height="1"/>
+<rect x="13" y="6" width="1" height="1" fill-opacity="0.99"/>
+<rect x="14" y="6" width="2" height="1"/>
+<rect x="16" y="6" width="1" height="1" fill-opacity="0.98"/>
+<rect x="17" y="6" width="1" height="1"/>
+<rect x="18" y="6" width="1" height="1" fill-opacity="0.54"/>
+<rect x="20" y="6" width="1" height="1" fill-opacity="0.02"/>
+<rect x="12" y="7" width="1" height="1" fill-opacity="0.84"/>
+<rect x="13" y="7" width="1" height="1"/>
+<rect x="14" y="7" width="1" height="1" fill-opacity="0.99"/>
+<rect x="15" y="7" width="1" height="1"/>
+<rect x="16" y="7" width="1" height="1" fill-opacity="0.98"/>
+<rect x="17" y="7" width="1" height="1"/>
+<rect x="18" y="7" width="1" height="1" fill-opacity="0.45"/>
+<rect x="20" y="7" width="1" height="1" fill-opacity="0.02"/>
+<rect x="11" y="8" width="1" height="1" fill-opacity="0.03"/>
+<rect x="12" y="8" width="1" height="1" fill-opacity="0.83"/>
+<rect x="13" y="8" width="1" height="1"/>
+<rect x="14" y="8" width="1" height="1" fill-opacity="0.99"/>
+<rect x="15" y="8" width="2" height="1"/>
+<rect x="17" y="8" width="1" height="1" fill-opacity="0.96"/>
+<rect x="18" y="8" width="1" height="1" fill-opacity="0.13"/>
+<rect x="20" y="8" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="9" width="2" height="1" fill-opacity="0.01"/>
+<rect x="12" y="9" width="1" height="1" fill-opacity="0.66"/>
+<rect x="13" y="9" width="2" height="1" fill-opacity="0.99"/>
+<rect x="15" y="9" width="1" height="1" fill-opacity="0.98"/>
+<rect x="16" y="9" width="1" height="1"/>
+<rect x="17" y="9" width="1" height="1" fill-opacity="0.56"/>
+<rect x="19" y="9" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="10" width="1" height="1" fill-opacity="0.02"/>
+<rect x="12" y="10" width="1" height="1" fill-opacity="0.48"/>
+<rect x="13" y="10" width="1" height="1"/>
+<rect x="14" y="10" width="1" height="1" fill-opacity="0.98"/>
+<rect x="15" y="10" width="2" height="1"/>
+<rect x="17" y="10" width="1" height="1" fill-opacity="0.17"/>
+<rect x="18" y="10" width="1" height="1" fill-opacity="0.02"/>
+<rect x="19" y="10" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="11" width="1" height="1" fill-opacity="0.02"/>
+<rect x="12" y="11" width="1" height="1" fill-opacity="0.04"/>
+<rect x="13" y="11" width="1" height="1" fill-opacity="0.26"/>
+<rect x="14" y="11" width="1" height="1" fill-opacity="0.87"/>
+<rect x="15" y="11" width="2" height="1"/>
+<rect x="17" y="11" width="1" height="1" fill-opacity="0.33"/>
+<rect x="20" y="11" width="1" height="1" fill-opacity="0.02"/>
+<rect x="21" y="11" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="12" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="12" width="1" height="1" fill-opacity="0.2"/>
+<rect x="13" y="12" width="1" height="1" fill-opacity="0.58"/>
+<rect x="14" y="12" width="2" height="1" fill-opacity="0.99"/>
+<rect x="16" y="12" width="1" height="1"/>
+<rect x="17" y="12" width="1" height="1" fill-opacity="0.92"/>
+<rect x="18" y="12" width="1" height="1" fill-opacity="0.36"/>
+<rect x="19" y="12" width="1" height="1" fill-opacity="0.05"/>
+<rect x="22" y="12" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="13" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="13" width="1" height="1" fill-opacity="0.4"/>
+<rect x="11" y="13" width="1" height="1" fill-opacity="0.82"/>
+<rect x="12" y="13" width="7" height="1"/>
+<rect x="19" y="13" width="1" height="1" fill-opacity="0.88"/>
+<rect x="20" y="13" width="1" height="1" fill-opacity="0.56"/>
+<rect x="21" y="13" width="1" height="1" fill-opacity="0.15"/>
+<rect x="7" y="14" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="14" width="1" height="1" fill-opacity="0.53"/>
+<rect x="10" y="14" width="3" height="1"/>
+<rect x="13" y="14" width="1" height="1" fill-opacity="0.99"/>
+<rect x="14" y="14" width="4" height="1"/>
+<rect x="18" y="14" width="1" height="1" fill-opacity="0.99"/>
+<rect x="19" y="14" width="2" height="1"/>
+<rect x="21" y="14" width="1" height="1" fill-opacity="0.95"/>
+<rect x="22" y="14" width="1" height="1" fill-opacity="0.26"/>
+<rect x="24" y="14" width="1" height="1" fill-opacity="0.01"/>
+<rect x="6" y="15" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="15" width="1" height="1" fill-opacity="0.15"/>
+<rect x="9" y="15" width="1" height="1"/>
+<rect x="10" y="15" width="2" height="1" fill-opacity="0.99"/>
+<rect x="12" y="15" width="8" height="1"/>
+<rect x="20" y="15" width="1" height="1" fill-opacity="0.97"/>
+<rect x="21" y="15" width="1" height="1"/>
+<rect x="22" y="15" width="1" height="1" fill-opacity="0.78"/>
+<rect x="24" y="15" width="1" height="1" fill-opacity="0.01"/>
+<rect x="6" y="16" width="1" height="1" fill-opacity="0.02"/>
+<rect x="8" y="16" width="1" height="1" fill-opacity="0.42"/>
+<rect x="9" y="16" width="1" height="1"/>
+<rect x="10" y="16" width="1" height="1" fill-opacity="0.98"/>
+<rect x="11" y="16" width="11" height="1"/>
+<rect x="22" y="16" width="1" height="1" fill-opacity="0.91"/>
+<rect x="23" y="16" width="1" height="1" fill-opacity="0.05"/>
+<rect x="6" y="17" width="1" height="1" fill-opacity="0.02"/>
+<rect x="8" y="17" width="1" height="1" fill-opacity="0.51"/>
+<rect x="9" y="17" width="1" height="1"/>
+<rect x="10" y="17" width="2" height="1" fill-opacity="0.98"/>
+<rect x="12" y="17" width="1" height="1" fill-opacity="0.99"/>
+<rect x="13" y="17" width="6" height="1"/>
+<rect x="19" y="17" width="3" height="1" fill-opacity="0.99"/>
+<rect x="22" y="17" width="1" height="1" fill-opacity="0.95"/>
+<rect x="23" y="17" width="1" height="1" fill-opacity="0.1"/>
+<rect x="6" y="18" width="2" height="1" fill-opacity="0.01"/>
+<rect x="8" y="18" width="1" height="1" fill-opacity="0.79"/>
+<rect x="9" y="18" width="1" height="1" fill-opacity="0.98"/>
+<rect x="10" y="18" width="1" height="1" fill-opacity="0.99"/>
+<rect x="11" y="18" width="7" height="1"/>
+<rect x="18" y="18" width="1" height="1" fill-opacity="0.99"/>
+<rect x="19" y="18" width="3" height="1"/>
+<rect x="22" y="18" width="1" height="1" fill-opacity="0.97"/>
+<rect x="23" y="18" width="1" height="1" fill-opacity="0.06"/>
+<rect x="6" y="19" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="19" width="1" height="1" fill-opacity="0.48"/>
+<rect x="9" y="19" width="1" height="1"/>
+<rect x="10" y="19" width="1" height="1" fill-opacity="0.99"/>
+<rect x="11" y="19" width="1" height="1" fill-opacity="0.38"/>
+<rect x="12" y="19" width="1" height="1" fill-opacity="0.76"/>
+<rect x="13" y="19" width="1" height="1"/>
+<rect x="14" y="19" width="2" height="1" fill-opacity="0.99"/>
+<rect x="16" y="19" width="3" height="1"/>
+<rect x="19" y="19" width="1" height="1" fill-opacity="0.69"/>
+<rect x="20" y="19" width="1" height="1" fill-opacity="0.79"/>
+<rect x="21" y="19" width="1" height="1" fill-opacity="0.63"/>
+<rect x="22" y="19" width="1" height="1" fill-opacity="0.79"/>
+<rect x="23" y="19" width="1" height="1" fill-opacity="0.26"/>
+<rect x="25" y="19" width="1" height="1" fill-opacity="0.01"/>
+<rect x="8" y="20" width="1" height="1" fill-opacity="0.03"/>
+<rect x="9" y="20" width="1" height="1" fill-opacity="0.63"/>
+<rect x="10" y="20" width="1" height="1" fill-opacity="0.91"/>
+<rect x="11" y="20" width="1" height="1" fill-opacity="0.37"/>
+<rect x="12" y="20" width="1" height="1" fill-opacity="0.48"/>
+<rect x="13" y="20" width="4" height="1"/>
+<rect x="17" y="20" width="1" height="1" fill-opacity="0.44"/>
+<rect x="18" y="20" width="1" height="1" fill-opacity="0.8"/>
+<rect x="19" y="20" width="1" height="1" fill-opacity="0.2"/>
+<rect x="20" y="20" width="1" height="1" fill-opacity="0.33"/>
+<rect x="21" y="20" width="1" height="1" fill-opacity="0.4"/>
+<rect x="22" y="20" width="1" height="1" fill-opacity="0.77"/>
+<rect x="23" y="20" width="1" height="1" fill-opacity="0.76"/>
+<rect x="25" y="20" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="21" width="1" height="1" fill-opacity="0.88"/>
+<rect x="11" y="21" width="1" height="1" fill-opacity="0.93"/>
+<rect x="12" y="21" width="1" height="1" fill-opacity="0.86"/>
+<rect x="13" y="21" width="1" height="1" fill-opacity="0.64"/>
+<rect x="14" y="21" width="1" height="1" fill-opacity="0.24"/>
+<rect x="15" y="21" width="1" height="1" fill-opacity="0.8"/>
+<rect x="16" y="21" width="1" height="1"/>
+<rect x="17" y="21" width="1" height="1" fill-opacity="0.19"/>
+<rect x="18" y="21" width="1" height="1" fill-opacity="0.25"/>
+<rect x="19" y="21" width="1" height="1" fill-opacity="0.46"/>
+<rect x="20" y="21" width="1" height="1" fill-opacity="0.76"/>
+<rect x="21" y="21" width="1" height="1" fill-opacity="0.66"/>
+<rect x="22" y="21" width="1" height="1" fill-opacity="0.17"/>
+<rect x="23" y="21" width="1" height="1" fill-opacity="0.24"/>
+<rect x="8" y="22" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="22" width="1" height="1" fill-opacity="0.31"/>
+<rect x="10" y="22" width="1" height="1" fill-opacity="0.47"/>
+<rect x="11" y="22" width="1" height="1" fill-opacity="0.3"/>
+<rect x="12" y="22" width="1" height="1" fill-opacity="0.98"/>
+<rect x="13" y="22" width="1" height="1" fill-opacity="0.69"/>
+<rect x="14" y="22" width="1" height="1" fill-opacity="0.25"/>
+<rect x="15" y="22" width="1" height="1" fill-opacity="0.17"/>
+<rect x="16" y="22" width="1" height="1" fill-opacity="0.94"/>
+<rect x="17" y="22" width="1" height="1" fill-opacity="0.65"/>
+<rect x="18" y="22" width="1" height="1" fill-opacity="0.24"/>
+<rect x="19" y="22" width="1" height="1" fill-opacity="0.85"/>
+<rect x="20" y="22" width="1" height="1" fill-opacity="0.84"/>
+<rect x="21" y="22" width="1" height="1" fill-opacity="0.25"/>
+<rect x="22" y="22" width="1" height="1" fill-opacity="0.58"/>
+<rect x="23" y="22" width="1" height="1" fill-opacity="0.17"/>
+<rect x="25" y="22" width="1" height="1" fill-opacity="0.01"/>
+<rect x="7" y="23" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="23" width="1" height="1" fill-opacity="0.53"/>
+<rect x="10" y="23" width="1" height="1" fill-opacity="0.23"/>
+<rect x="11" y="23" width="1" height="1" fill-opacity="0.05"/>
+<rect x="12" y="23" width="1" height="1" fill-opacity="0.99"/>
+<rect x="13" y="23" width="1" height="1"/>
+<rect x="14" y="23" width="1" height="1" fill-opacity="0.6"/>
+<rect x="16" y="23" width="1" height="1" fill-opacity="0.56"/>
+<rect x="17" y="23" width="1" height="1" fill-opacity="0.87"/>
+<rect x="18" y="23" width="1" height="1" fill-opacity="0.11"/>
+<rect x="19" y="23" width="1" height="1"/>
+<rect x="20" y="23" width="1" height="1" fill-opacity="0.71"/>
+<rect x="22" y="23" width="1" height="1" fill-opacity="0.24"/>
+<rect x="23" y="23" width="1" height="1" fill-opacity="0.07"/>
+<rect x="10" y="24" width="1" height="1" fill-opacity="0.22"/>
+<rect x="11" y="24" width="1" height="1" fill-opacity="0.05"/>
+<rect x="12" y="24" width="1" height="1" fill-opacity="0.92"/>
+<rect x="13" y="24" width="2" height="1"/>
+<rect x="15" y="24" width="1" height="1" fill-opacity="0.03"/>
+<rect x="16" y="24" width="1" height="1" fill-opacity="0.48"/>
+<rect x="17" y="24" width="1" height="1" fill-opacity="0.98"/>
+<rect x="18" y="24" width="1" height="1" fill-opacity="0.03"/>
+<rect x="19" y="24" width="1" height="1" fill-opacity="0.47"/>
+<rect x="20" y="24" width="1" height="1" fill-opacity="0.64"/>
+<rect x="21" y="24" width="1" height="1" fill-opacity="0.26"/>
+<rect x="22" y="24" width="1" height="1" fill-opacity="0.07"/>
+<rect x="23" y="24" width="1" height="1" fill-opacity="0.02"/>
+<rect x="11" y="25" width="1" height="1" fill-opacity="0.01"/>
+<rect x="12" y="25" width="1" height="1" fill-opacity="0.44"/>
+<rect x="13" y="25" width="1" height="1" fill-opacity="0.97"/>
+<rect x="14" y="25" width="1" height="1" fill-opacity="0.84"/>
+<rect x="15" y="25" width="1" height="1" fill-opacity="0.26"/>
+<rect x="16" y="25" width="1" height="1" fill-opacity="0.95"/>
+<rect x="17" y="25" width="1" height="1"/>
+<rect x="18" y="25" width="1" height="1" fill-opacity="0.17"/>
+<rect x="19" y="25" width="1" height="1" fill-opacity="0.58"/>
+<rect x="20" y="25" width="1" height="1" fill-opacity="0.18"/>
+<rect x="21" y="25" width="1" height="1" fill-opacity="0.12"/>
+<rect x="9" y="26" width="1" height="1" fill-opacity="0.03"/>
+<rect x="10" y="26" width="1" height="1" fill-opacity="0.87"/>
+<rect x="11" y="26" width="1" height="1" fill-opacity="0.41"/>
+<rect x="12" y="26" width="1" height="1" fill-opacity="0.15"/>
+<rect x="13" y="26" width="1" height="1" fill-opacity="0.41"/>
+<rect x="14" y="26" width="1" height="1" fill-opacity="0.24"/>
+<rect x="15" y="26" width="1" height="1" fill-opacity="0.61"/>
+<rect x="16" y="26" width="2" height="1"/>
+<rect x="18" y="26" width="1" height="1" fill-opacity="0.24"/>
+<rect x="19" y="26" width="1" height="1" fill-opacity="0.15"/>
+<rect x="20" y="26" width="1" height="1" fill-opacity="0.05"/>
+<rect x="9" y="27" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="27" width="1" height="1" fill-opacity="0.45"/>
+<rect x="11" y="27" width="1" height="1" fill-opacity="0.14"/>
+<rect x="12" y="27" width="1" height="1" fill-opacity="0.12"/>
+<rect x="13" y="27" width="1" height="1" fill-opacity="0.09"/>
+<rect x="15" y="27" width="1" height="1" fill-opacity="0.83"/>
+<rect x="16" y="27" width="2" height="1"/>
+<rect x="18" y="27" width="1" height="1" fill-opacity="0.14"/>
+<rect x="14" y="28" width="1" height="1" fill-opacity="0.17"/>
+<rect x="15" y="28" width="1" height="1" fill-opacity="0.88"/>
+<rect x="16" y="28" width="1" height="1" fill-opacity="0.82"/>
+<rect x="17" y="28" width="1" height="1" fill-opacity="0.5"/>
+<rect x="19" y="28" width="1" height="1" fill-opacity="0.01"/>
+<rect x="9" y="29" width="1" height="1" fill-opacity="0.01"/>
+<rect x="10" y="29" width="1" height="1" fill-opacity="0.02"/>
+<rect x="11" y="29" width="1" height="1" fill-opacity="0.1"/>
+<rect x="12" y="29" width="1" height="1" fill-opacity="0.9"/>
+<rect x="13" y="29" width="1" height="1" fill-opacity="0.31"/>
+<rect x="14" y="29" width="1" height="1" fill-opacity="0.09"/>
+<rect x="15" y="29" width="1" height="1" fill-opacity="0.08"/>
+<rect x="16" y="29" width="1" height="1" fill-opacity="0.34"/>
+<rect x="17" y="29" width="1" height="1" fill-opacity="0.29"/>
+<rect x="19" y="29" width="1" height="1" fill-opacity="0.01"/>
+<rect x="11" y="30" width="1" height="1" fill-opacity="0.04"/>
+<rect x="12" y="30" width="1" height="1" fill-opacity="0.45"/>
+<rect x="13" y="30" width="2" height="1" fill-opacity="0.11"/>
+<rect x="16" y="30" width="1" height="1" fill-opacity="0.35"/>
+<rect x="17" y="30" width="1" height="1" fill-opacity="0.36"/>
+<rect x="19" y="30" width="1" height="1" fill-opacity="0.01"/>
+<rect x="14" y="31" width="1" height="1" fill-opacity="0.14"/>
+<rect x="15" y="31" width="1" height="1" fill-opacity="0.03"/>
+</g>
+</svg></span>
+      <span class="brand-text">Tic Tac Toe</span>
+    </a>
+    <nav class="header-nav">
+      <a href="https://apps.ashiqur.in/apps/tic-tac-toe/">Tic Tac Toe</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="legal wrap">
+    <p class="eyebrow-row">
+      <span class="eyebrow-text">Privacy Policy</span>
+      <span class="eyebrow-dot" aria-hidden="true"></span>
+      <span class="eyebrow-note">Effective Date: November 7, 2026</span>
+    </p>
+    <h1>Privacy Policy</h1>
+
+    <h3>Introduction</h3>
+    <p>The <span class="highlight">Tic Tac Toe</span> application for Windows is built and maintained as a free app. This service is provided at no cost and is intended for use as is. This page explains what information the app handles, how it is used, and the choices you have. The app is designed to work on your PC. We do not run any server that receives your data.</p>
+
+    <h3>Summary</h3>
+    <ul>
+      <li>There is no account, registration or sign-in required to play the app.</li>
+      <li>Your game history stays on your PC unless you choose to turn on Google Drive sync.</li>
+      <li>The developer does not collect, receive, sell or share your data. There are no ads and no analytics or tracking.</li>
+    </ul>
+
+    <h3>Information Stored on Your PC</h3>
+    <ul>
+      <li><span class="highlight">History:</span> Games you play against the computer are saved in the app's data folder on your PC so you can see them again. Each game stores its date and time, difficulty, the mark you played (X or O), the result (win, loss or draw) and the list of moves. Games in two-player mode are never saved.</li>
+      <li><span class="highlight">Settings:</span> Your preference for automatic sync, and the list of games you have deleted (so they do not return after a sync), are stored locally.</li>
+      <li><span class="highlight">Deleting:</span> You can delete a single game, or use "Clear all data" to remove all history. "Clear all data" starts a 10-minute countdown that you can cancel before it ends.</li>
+    </ul>
+
+    <h3>Permissions</h3>
+    <ul>
+      <li>The app does not use your camera, microphone, contacts, location or files.</li>
+      <li><span class="highlight">Internet:</span> Used only for the optional Google Drive sync. If you never turn sync on, the app does not need an internet connection.</li>
+    </ul>
+
+    <h3>Optional Google Drive Sync</h3>
+    <p>Google Drive sync is <span class="highlight">off by default</span>. If you turn it on, you sign in with your Google account in your web browser and allow the app to use its own hidden "app data" folder in your Google Drive. The app can access only that folder, not your other Drive files.</p>
+    <ul>
+      <li><span class="highlight">What is synced:</span> Your game history, saved as a single file in your own Google Drive.</li>
+      <li><span class="highlight">Who can see it:</span> The file lives in your Google account. The developer cannot see it or access it. Google handles it under <a href="https://policies.google.com/privacy" rel="noopener">Google's Privacy Policy</a>.</li>
+      <li><span class="highlight">Account information:</span> The app reads the email address of the Google account you select only to show which account is in use, and keeps it on your PC. Your Google password is never seen by the app. Google sign-in details (an access token) are stored on your PC so you stay signed in.</li>
+      <li><span class="highlight">When it runs:</span> When you tap "Sync with Google Drive" or "Sync now", and after each game if you turn on "Sync with Google Drive after each game".</li>
+      <li><span class="highlight">Your controls:</span> Use "Change email" to switch to another Google account, "Turn off sync" to sign out and stop syncing, "Delete" to remove a single game, and "Clear all data" to remove your history on this PC and the synced file in your Drive after the 10-minute countdown.</li>
+    </ul>
+    <p>The app's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. The app uses Google data only to provide the sync feature you ask for. It is not used for advertising, is not sold, and is not shared with anyone.</p>
+
+    <h3>Third-Party Services</h3>
+    <ul>
+      <li><span class="highlight">Google services:</span> The app uses Google Sign-In (OAuth) and the Google Drive API, only if you enable sync. Google may process limited technical data as described in its own policies.</li>
+      <li><span class="highlight">Microsoft Store:</span> If you install the app from the Microsoft Store, Microsoft may collect download and diagnostic information under the <a href="https://privacy.microsoft.com/privacystatement" rel="noopener">Microsoft Privacy Statement</a>. The developer does not receive your personal data from the Store.</li>
+      <li><span class="highlight">No tracking:</span> The app does not use advertising, analytics, crash-reporting or tracking SDKs, and does not collect your location.</li>
+    </ul>
+
+    <h3>Data Retention and Your Choices</h3>
+    <ul>
+      <li>Delete single games, or all history, inside the app.</li>
+      <li>Turn off Google Drive sync, or revoke the app's access from your <a href="https://myaccount.google.com/permissions" rel="noopener">Google Account permissions</a>.</li>
+      <li>Uninstalling the app normally removes the data stored on your PC. Your Google Drive copy is removed only if you delete it (or use "Clear all data" before uninstalling).</li>
+    </ul>
+
+    <h3>Security</h3>
+    <p>Your history is kept in the app's data folder on your PC. Communication with Google Drive uses encrypted connections (HTTPS). No method of storage is completely secure, so please keep your PC and Google account protected.</p>
+
+    <h3>Children's Privacy</h3>
+    <p>This application is suitable for users of all ages. We do not knowingly collect personal information from anyone, including children. The developer does not receive any data from the app. If you use the optional Google Drive sync, your Google account's own terms and age requirements apply.</p>
+
+    <h3>Changes to This Privacy Policy</h3>
+    <p>This Privacy Policy may be updated from time to time, for example when the app adds features. You are advised to review this page periodically. Updates will be posted on this page with a new effective date.</p>
+
+    <h3>Contact Us</h3>
+    <p>If you have any questions or suggestions regarding this Privacy Policy, contact the developer at <a href="mailto:email@ashiqur.in">email@ashiqur.in</a>.</p>
+  </section>
+</main>
+
+<footer class="site-footer wrap">
+  <div class="footer-top">
+    <span>© 2026 ashiqur - Tic Tac Toe.</span>
+    <span class="footer-dot" aria-hidden="true"></span>
+    <a href="https://apps.ashiqur.in/apps/tic-tac-toe/">Tic Tac Toe</a>
+  </div>
+  <p class="footer-updated">Last updated: November 2026</p>
+</footer>
+
+<script>
+(function(){
+  // The pixel-portrait avatar above is already rendered as the default/
+  // placeholder header logo. Test-load logo.png (same directory as the
+  // main app page, one level up from this privacy-policy page) in the
+  // background and only swap it in once it actually finishes loading -
+  // if it's missing, misnamed, or hasn't been uploaded yet, the avatar
+  // just stays put instead of showing a broken-image icon.
+  var mark = document.getElementById('brandMark');
+  if (!mark) return;
+  var probe = new Image();
+  probe.onload = function(){
+    var img = document.createElement('img');
+    img.src = '../logo.png';
+    img.alt = '';
+    mark.innerHTML = '';
+    mark.appendChild(img);
+  };
+  probe.onerror = function(){ /* keep the default avatar mark */ };
+  probe.src = '../logo.png';
+})();
+</script>
+
+</body>
+</html>
